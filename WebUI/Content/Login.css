@@ -1,0 +1,66 @@
+﻿body {
+    background-color:#373746;
+    color:white;
+    font-family:sans-serif;
+    font-size:16px;
+}
+
+.containerLogin{
+    width:500px;
+    max-width:500px;
+}
+
+.formLogin{
+    color:white;
+}
+
+/*textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-    input:focus {
+    border-color: #F9A825;
+    box-shadow: #F9A825;
+    -webkit-box-shadow: #F9A825;
+    outline: -webkit-focus-ring-color auto 5px;
+}*/
+
+#bootstrap-overrides-focus input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, input[type="url"]:focus, textarea:focus{
+  border-color: #FFB74D;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
+  outline: 0 none;
+   min-width:300px;
+}
+
+#bootstrap-overrides-Input input[type="text"], input[type="password"], input[type="email"], input[type="url"], textarea{
+ background:#282a38;
+ border-color: #545862;
+ min-width:300px;
+ color:white;
+}
+
+
+.btn {
+ background:#3e4764;
+ border-color: #545862;
+}
+
+.btn:hover{
+  background:#3e4764;
+  border-color: #FFB74D;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
+  outline: 0 none;
+}
+
+.vertical-center {
+  min-height: 70%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 70vh; /* These two lines are counted as one :-)       */
+  display: flex;
+  align-items: center;
+}
+
+/*.center {
+  position: absolute;
+  top: 0;
+  bottom: 0; 
+  left: 0;
+  right: 0;
+  
+  margin: auto;  
+}*/
