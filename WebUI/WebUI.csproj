@@ -189,6 +189,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infraestructura1\NinjectDependenciaResuelta.cs" />
     <Compile Include="Models\AlmacenEDM.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -222,6 +223,7 @@
     <Compile Include="Models\Stocks.cs">
       <DependentUpon>AlmacenEDM.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SuministroViewModel.cs" />
     <Compile Include="Models\Tipo.cs">
       <DependentUpon>AlmacenEDM.tt</DependentUpon>
     </Compile>
@@ -255,6 +257,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Prueba\" />
     <Folder Include="Views\Suministro\" />
   </ItemGroup>
   <ItemGroup>

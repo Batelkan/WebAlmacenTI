@@ -7,7 +7,7 @@ using WebUI.Models;
 
 namespace Dominio.Abstracto
 {
-    class ISuministroRespositorio
+    public interface ISuministroRespositorio
     {
         IEnumerable<Articulos> Suministros { get; set; }
     }
