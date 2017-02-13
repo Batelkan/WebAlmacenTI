@@ -7,5 +7,6 @@ namespace WebUI.Models
 {
     public class SuministroViewModel
     {
+
     }
 }
