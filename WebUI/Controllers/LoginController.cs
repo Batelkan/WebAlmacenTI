@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebUI.Models;
+using Dominio.Modelo;
 
 namespace WebUI.Controllers
 {
@@ -21,9 +22,10 @@ namespace WebUI.Controllers
             //var errors = ModelState.Values.SelectMany(v => v.Errors);
             if (ModelState.IsValid)
             {
-                using (InformaticaEntities context = new  InformaticaEntities())
+                using (AlmacenEntidades context = new AlmacenEntidades())
                 {
-                 
+
+                    //var obj = context.WebAdminUser.Where(x => x.Correo.Equals(usr.Correo) && x.contraseña.Equals(usr.contraseña)).FirstOrDefault();
                     var obj = context.WebAdminUser.Where(x => x.Correo.Equals(usr.Correo) && x.contraseña.Equals(usr.contraseña)).FirstOrDefault();
                     if (obj != null)
                     {

@@ -7,15 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebUI.Models
+namespace Dominio.Modelo
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class UnidadNegocio
+    public partial class Unidades
     {
         public int ID { get; set; }
         public string Unidad { get; set; }
-        public string Descipcion { get; set; }
+        public string Abreviacion { get; set; }
+        public string Descripcion { get; set; }
     }
 }

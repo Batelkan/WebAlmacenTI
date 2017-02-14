@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="InformaticaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="AlmacenModelo.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Arca">
           <Key>
             <PropertyRef Name="ID" />
@@ -84,6 +84,16 @@
           <Property Name="Nombre" Type="varchar" MaxLength="300" Nullable="false" />
           <Property Name="JefeArea" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+        </EntityType>
         <EntityType Name="Stocks">
           <Key>
             <PropertyRef Name="ID" />
@@ -157,12 +167,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="InformaticaModelStoreContainer">
+        <EntityContainer Name="AlmacenModeloStoreContainer">
           <EntitySet Name="Arca" EntityType="Self.Arca" Schema="Informatica" store:Type="Tables" />
           <EntitySet Name="Articulos" EntityType="Self.Articulos" Schema="Informatica" store:Type="Tables" />
           <EntitySet Name="Computadoras" EntityType="Self.Computadoras" Schema="Informatica" store:Type="Tables" />
           <EntitySet Name="Datos" EntityType="Self.Datos" Schema="Informatica" store:Type="Tables" />
           <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="Informatica" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="Informatica" store:Type="Tables" />
           <EntitySet Name="Stocks" EntityType="Self.Stocks" Schema="Informatica" store:Type="Tables" />
           <EntitySet Name="Tipo" EntityType="Self.Tipo" Schema="Informatica" store:Type="Tables" />
           <EntitySet Name="Unidades" EntityType="Self.Unidades" Schema="Informatica" store:Type="Tables" />
@@ -178,7 +189,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="InformaticaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="AlmacenModelo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Arca">
           <Key>
             <PropertyRef Name="ID" />
@@ -259,6 +270,16 @@
           <Property Name="Nombre" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="JefeArea" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+        </EntityType>
         <EntityType Name="Stocks">
           <Key>
             <PropertyRef Name="ID" />
@@ -333,12 +354,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="InformaticaEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="AlmacenEntidades" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Arca" EntityType="Self.Arca" />
           <EntitySet Name="Articulos" EntityType="Self.Articulos" />
           <EntitySet Name="Computadoras" EntityType="Self.Computadoras" />
           <EntitySet Name="Datos" EntityType="Self.Datos" />
           <EntitySet Name="Departamentos" EntityType="Self.Departamentos" />
+          <EntitySet Name="Products" EntityType="Self.Products" />
           <EntitySet Name="Stocks" EntityType="Self.Stocks" />
           <EntitySet Name="Tipo" EntityType="Self.Tipo" />
           <EntitySet Name="Unidades" EntityType="Self.Unidades" />
@@ -355,9 +377,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="InformaticaModelStoreContainer" CdmEntityContainer="InformaticaEntities">
+        <EntityContainerMapping StorageEntityContainer="AlmacenModeloStoreContainer" CdmEntityContainer="AlmacenEntidades">
           <EntitySetMapping Name="Arca">
-            <EntityTypeMapping TypeName="InformaticaModel.Arca">
+            <EntityTypeMapping TypeName="AlmacenModelo.Arca">
               <MappingFragment StoreEntitySet="Arca">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Usuario" ColumnName="Usuario" />
@@ -369,7 +391,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Articulos">
-            <EntityTypeMapping TypeName="InformaticaModel.Articulos">
+            <EntityTypeMapping TypeName="AlmacenModelo.Articulos">
               <MappingFragment StoreEntitySet="Articulos">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Fabricante" ColumnName="Fabricante" />
@@ -391,7 +413,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Computadoras">
-            <EntityTypeMapping TypeName="InformaticaModel.Computadoras">
+            <EntityTypeMapping TypeName="AlmacenModelo.Computadoras">
               <MappingFragment StoreEntitySet="Computadoras">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Tipo" ColumnName="Tipo" />
@@ -417,7 +439,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Datos">
-            <EntityTypeMapping TypeName="InformaticaModel.Datos">
+            <EntityTypeMapping TypeName="AlmacenModelo.Datos">
               <MappingFragment StoreEntitySet="Datos">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ID_Usuario" ColumnName="ID_Usuario" />
@@ -431,7 +453,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Departamentos">
-            <EntityTypeMapping TypeName="InformaticaModel.Departamentos">
+            <EntityTypeMapping TypeName="AlmacenModelo.Departamentos">
               <MappingFragment StoreEntitySet="Departamentos">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
@@ -440,8 +462,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="AlmacenModelo.Products">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Stocks">
-            <EntityTypeMapping TypeName="InformaticaModel.Stocks">
+            <EntityTypeMapping TypeName="AlmacenModelo.Stocks">
               <MappingFragment StoreEntitySet="Stocks">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ID_Usuario" ColumnName="ID_Usuario" />
@@ -456,7 +489,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tipo">
-            <EntityTypeMapping TypeName="InformaticaModel.Tipo">
+            <EntityTypeMapping TypeName="AlmacenModelo.Tipo">
               <MappingFragment StoreEntitySet="Tipo">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Tipo1" ColumnName="Tipo" />
@@ -465,7 +498,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Unidades">
-            <EntityTypeMapping TypeName="InformaticaModel.Unidades">
+            <EntityTypeMapping TypeName="AlmacenModelo.Unidades">
               <MappingFragment StoreEntitySet="Unidades">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Unidad" ColumnName="Unidad" />
@@ -475,7 +508,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UnidadNegocio">
-            <EntityTypeMapping TypeName="InformaticaModel.UnidadNegocio">
+            <EntityTypeMapping TypeName="AlmacenModelo.UnidadNegocio">
               <MappingFragment StoreEntitySet="UnidadNegocio">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Unidad" ColumnName="Unidad" />
@@ -484,7 +517,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Usuarios">
-            <EntityTypeMapping TypeName="InformaticaModel.Usuarios">
+            <EntityTypeMapping TypeName="AlmacenModelo.Usuarios">
               <MappingFragment StoreEntitySet="Usuarios">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -497,7 +530,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="WebAdminUser">
-            <EntityTypeMapping TypeName="InformaticaModel.WebAdminUser">
+            <EntityTypeMapping TypeName="AlmacenModelo.WebAdminUser">
               <MappingFragment StoreEntitySet="WebAdminUser">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />

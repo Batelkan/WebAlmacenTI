@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebUI.Models
+namespace Dominio.Modelo
 {
     using System;
     using System.Collections.Generic;

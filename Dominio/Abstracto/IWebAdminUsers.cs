@@ -7,8 +7,8 @@ using Dominio.Modelo;
 
 namespace Dominio.Abstracto
 {
-    public interface ISuministroRespositorio
+   public interface IWebAdminUsers
     {
-        IEnumerable<Articulos> Suministros { get; set; }
+        IEnumerable<WebAdminUser> WebAdmin { get; set; }
     }
 }

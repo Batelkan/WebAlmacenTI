@@ -38,6 +38,8 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,21 +49,88 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstracto\ISuministroRespositorio.cs" />
+    <Compile Include="Abstracto\IWebAdminUsers.cs" />
     <Compile Include="Concreto\SuministroRepositorio.cs" />
+    <Compile Include="Concreto\WebAdminUsers.cs" />
+    <Compile Include="Modelo\AlmacenEntidadDeModelo.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AlmacenEntidadDeModelo.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\AlmacenEntidadDeModelo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AlmacenEntidadDeModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\AlmacenEntidadDeModelo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AlmacenEntidadDeModelo.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Arca.cs">
+      <DependentUpon>AlmacenEntidadDeModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Articulos.cs">
+      <DependentUpon>AlmacenEntidadDeModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Computadoras.cs">
+      <DependentUpon>AlmacenEntidadDeModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Datos.cs">
+      <DependentUpon>AlmacenEntidadDeModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Departamentos.cs">
+      <DependentUpon>AlmacenEntidadDeModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Products.cs">
+      <DependentUpon>AlmacenEntidadDeModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Stocks.cs">
+      <DependentUpon>AlmacenEntidadDeModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Tipo.cs">
+      <DependentUpon>AlmacenEntidadDeModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Unidades.cs">
+      <DependentUpon>AlmacenEntidadDeModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\UnidadNegocio.cs">
+      <DependentUpon>AlmacenEntidadDeModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Usuarios.cs">
+      <DependentUpon>AlmacenEntidadDeModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\WebAdminUser.cs">
+      <DependentUpon>AlmacenEntidadDeModelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebUI\WebUI.csproj">
-      <Project>{61e50b8c-b3a7-4981-bf6b-4bc863b662d1}</Project>
-      <Name>WebUI</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="Modelo\AlmacenEntidadDeModelo.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AlmacenEntidadDeModelo.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Modelo\AlmacenEntidadDeModelo.edmx.diagram">
+      <DependentUpon>AlmacenEntidadDeModelo.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Modelo\" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Modelo\AlmacenEntidadDeModelo.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AlmacenEntidadDeModelo.edmx</DependentUpon>
+      <LastGenOutput>AlmacenEntidadDeModelo.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modelo\AlmacenEntidadDeModelo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AlmacenEntidadDeModelo.edmx</DependentUpon>
+      <LastGenOutput>AlmacenEntidadDeModelo.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

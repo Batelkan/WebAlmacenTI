@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebUI.Models
+namespace Dominio.Modelo
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class InformaticaEntities : DbContext
+    public partial class AlmacenEntidades : DbContext
     {
-        public InformaticaEntities()
-            : base("name=InformaticaEntities")
+        public AlmacenEntidades()
+            : base("name=AlmacenEntidades")
         {
         }
     
@@ -30,6 +30,7 @@ namespace WebUI.Models
         public DbSet<Computadoras> Computadoras { get; set; }
         public DbSet<Datos> Datos { get; set; }
         public DbSet<Departamentos> Departamentos { get; set; }
+        public DbSet<Products> Products { get; set; }
         public DbSet<Stocks> Stocks { get; set; }
         public DbSet<Tipo> Tipo { get; set; }
         public DbSet<Unidades> Unidades { get; set; }

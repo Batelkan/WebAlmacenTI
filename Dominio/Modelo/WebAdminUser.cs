@@ -7,22 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebUI.Models
+namespace Dominio.Modelo
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Datos
+    public partial class WebAdminUser
     {
         public int ID { get; set; }
-        public int ID_Usuario { get; set; }
-        public string Contraseña_mail { get; set; }
-        public string Usuario_servidor { get; set; }
-        public string Contraseña_servidor { get; set; }
-        public string codigo_reloj { get; set; }
-        public string NumUsuario_reloj { get; set; }
-        public System.DateTime FechaDeRegistro { get; set; }
-    
-        public virtual Usuarios Usuarios { get; set; }
+        public string Nombre { get; set; }
+        public string Correo { get; set; }
+        public string contraseña { get; set; }
+        public string Nivel { get; set; }
     }
 }

@@ -7,21 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebUI.Models
+namespace Dominio.Modelo
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Stocks
+    public partial class Usuarios
     {
+        public Usuarios()
+        {
+            this.Datos = new HashSet<Datos>();
+        }
+    
         public int ID { get; set; }
-        public int ID_Usuario { get; set; }
-        public int ID_Depto { get; set; }
-        public int ID_Articulo { get; set; }
-        public int ID_Computadora { get; set; }
-        public System.DateTime FechaAsignacion { get; set; }
-        public string Observaciones { get; set; }
-        public string Autorizo { get; set; }
-        public Nullable<int> ID_UnidadNegocio { get; set; }
+        public string Nombre { get; set; }
+        public string ApellidoP { get; set; }
+        public string ApellidoM { get; set; }
+        public string Correo { get; set; }
+        public string Departamento { get; set; }
+        public string Puesto { get; set; }
+    
+        public virtual ICollection<Datos> Datos { get; set; }
     }
 }

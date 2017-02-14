@@ -8,12 +8,12 @@ using Dominio.Modelo;
 
 namespace Dominio.Concreto
 {
-   public class SuministroRepositorio:ISuministroRespositorio
+   public class WebAdminUsers:IWebAdminUsers
     {
-       AlmacenEntidades contexto = new AlmacenEntidades();
-       public IEnumerable<Articulos> Suministros
+        AlmacenEntidades contexto = new AlmacenEntidades();
+        public IEnumerable<WebAdminUser> WebAdmin
         {
-            get { return contexto.Articulos; }
+            get { return contexto.WebAdminUser; }
             set { }
         }
     }

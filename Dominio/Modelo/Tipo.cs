@@ -7,26 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebUI.Models
+namespace Dominio.Modelo
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Usuarios
+    public partial class Tipo
     {
-        public Usuarios()
-        {
-            this.Datos = new HashSet<Datos>();
-        }
-    
         public int ID { get; set; }
-        public string Nombre { get; set; }
-        public string ApellidoP { get; set; }
-        public string ApellidoM { get; set; }
-        public string Correo { get; set; }
-        public string Departamento { get; set; }
-        public string Puesto { get; set; }
-    
-        public virtual ICollection<Datos> Datos { get; set; }
+        public string Tipo1 { get; set; }
+        public string Descripcion { get; set; }
     }
 }

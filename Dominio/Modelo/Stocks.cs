@@ -7,16 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebUI.Models
+namespace Dominio.Modelo
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Unidades
+    public partial class Stocks
     {
         public int ID { get; set; }
-        public string Unidad { get; set; }
-        public string Abreviacion { get; set; }
-        public string Descripcion { get; set; }
+        public int ID_Usuario { get; set; }
+        public int ID_Depto { get; set; }
+        public int ID_Articulo { get; set; }
+        public int ID_Computadora { get; set; }
+        public System.DateTime FechaAsignacion { get; set; }
+        public string Observaciones { get; set; }
+        public string Autorizo { get; set; }
+        public Nullable<int> ID_UnidadNegocio { get; set; }
     }
 }

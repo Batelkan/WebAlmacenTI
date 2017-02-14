@@ -155,24 +155,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <EntityDeploy Include="Models\AlmacenEDM.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AlmacenEDM.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\AlmacenEDM.edmx.diagram">
-      <DependentUpon>AlmacenEDM.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
-    <Content Include="Models\AlmacenEDM.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AlmacenEDM.edmx</DependentUpon>
-      <LastGenOutput>AlmacenEDM.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\AlmacenEDM.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AlmacenEDM.edmx</DependentUpon>
-      <LastGenOutput>AlmacenEDM.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
@@ -190,55 +173,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infraestructura1\NinjectDependenciaResuelta.cs" />
-    <Compile Include="Models\AlmacenEDM.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AlmacenEDM.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AlmacenEDM.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AlmacenEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AlmacenEDM.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AlmacenEDM.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Arca.cs">
-      <DependentUpon>AlmacenEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Articulos.cs">
-      <DependentUpon>AlmacenEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Computadoras.cs">
-      <DependentUpon>AlmacenEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Datos.cs">
-      <DependentUpon>AlmacenEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Departamentos.cs">
-      <DependentUpon>AlmacenEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Stocks.cs">
-      <DependentUpon>AlmacenEDM.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\SuministroViewModel.cs" />
-    <Compile Include="Models\Tipo.cs">
-      <DependentUpon>AlmacenEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Unidades.cs">
-      <DependentUpon>AlmacenEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UnidadNegocio.cs">
-      <DependentUpon>AlmacenEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Usuarios.cs">
-      <DependentUpon>AlmacenEDM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WebAdminUser.cs">
-      <DependentUpon>AlmacenEDM.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -262,6 +197,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dominio\Dominio.csproj">
+      <Project>{01f54d2e-56c5-45da-8a1b-1143d05191ea}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

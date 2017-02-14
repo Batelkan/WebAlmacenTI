@@ -7,18 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebUI.Models
+namespace Dominio.Modelo
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Arca
+    public partial class UnidadNegocio
     {
         public int ID { get; set; }
-        public string Usuario { get; set; }
-        public string Contraseña { get; set; }
-        public string Descripcion { get; set; }
-        public string Observaciones { get; set; }
-        public System.DateTime FechaAlta { get; set; }
+        public string Unidad { get; set; }
+        public string Descipcion { get; set; }
     }
 }
