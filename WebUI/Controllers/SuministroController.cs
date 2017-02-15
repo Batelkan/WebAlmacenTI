@@ -11,12 +11,12 @@ namespace WebUI.Controllers
     {
        
         // GET: Suministro
-        public ActionResult Index()
+   
+
+        public ViewResult SuministrosLista()
         {
             return View();
         }
-
-
 
     }
 }

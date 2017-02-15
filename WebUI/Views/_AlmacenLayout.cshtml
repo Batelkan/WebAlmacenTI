@@ -1,13 +1,31 @@
-﻿<!DOCTYPE html>
+﻿ <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <div>
-        @RenderBody()
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Almacen Equipo Computo</a>
+        </div>
+    </div>
+    </nav>
+    <div class="container-fluid">
+       <div class="row">
+           <div class="col-sm-3 ">
+
+
+           </div>
+           <div class="col-sm-9">
+               @RenderBody()
+           </div>
+       </div>
     </div>
 </body>
 </html>
+ 

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Ninject;
+using Dominio.Abstracto;
+using Dominio.Concreto;
 
 namespace WebUI.Infraestructura1
 {
@@ -29,7 +31,7 @@ namespace WebUI.Infraestructura1
 
             private void AddBindigs()
             {
-
+                 kernel.Bind<IWebAdminUsers>().To<WebAdminUsers>();
             }
         }
     
