@@ -5,23 +5,85 @@
     <meta name="viewport" content="width=device-width" />
     <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/AlmacenLayoutStyle.css" rel="stylesheet" />
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-fixed-top navBarTop">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Almacen Equipo Computo</a>
+            <a class="" href="#">Almacen Equipo Computo</a>
         </div>
     </div>
     </nav>
     <div class="container-fluid">
        <div class="row">
-           <div class="col-sm-3 ">
-
+           <div class="col-sm-2 col-md-1 affix sidebar-nav">
+               <ul class="nav" >
+                   <li >
+                       <a href="#">
+                           <div class="row">
+                               <span class="glyphicon glyphicon-th"></span>
+                           </div>
+                           <div class="row">
+                                <span>Dash</span>
+                           </div>
+                        </a>
+                   </li>
+                   <li>
+                       <a href="">
+                           <div class="row">
+                               <span class="glyphicon glyphicon-th-list"></span>
+                           </div>
+                           <div class="row">
+                               <span>Suministros</span>
+                           </div>
+                        </a>
+                   </li>
+                   <li>
+                       <a href="">
+                           <div class="row">
+                               <span class="glyphicon glyphicon-modal-window"></span>
+                           </div>
+                           <div class="row">
+                               <span>Computo</span>
+                           </div>
+                        </a>
+                   </li>
+                   <li>
+                       <a href="">
+                           <div class="row">
+                               <span class="glyphicon glyphicon-user"></span>
+                           </div>
+                           <div class="row">
+                               <span>Usuarios</span>
+                           </div>
+                        </a>
+                   </li>
+                   <li>
+                       <a href="">
+                           <div class="row">
+                               <span class="glyphicon glyphicon-lock"></span>
+                           </div>
+                           <div class="row">
+                               <span>Arca</span>
+                           </div>
+                        </a>
+                   </li>
+                   <li>
+                       <a href="">
+                           <div class="row">
+                               <span class="glyphicon glyphicon-book"></span>
+                           </div>
+                           <div class="row">
+                               <span>Reportes</span>
+                           </div>
+                        </a>
+                   </li>
+               </ul>
 
            </div>
-           <div class="col-sm-9">
+           <div class="col-sm-10 col-sm-offset-2 col-md-11 col-md-offset-1 main ">
                @RenderBody()
            </div>
        </div>
