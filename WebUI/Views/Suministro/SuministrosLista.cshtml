@@ -1,4 +1,6 @@
-﻿
+﻿@using WebUI.HtmlHelpers
+@model WebUI.Models.SuministroViewModel
+
 @{
     ViewBag.Title = "SuministrosLista";
     Layout = "~/Views/_AlmacenLayout.cshtml";
@@ -10,6 +12,17 @@
     <h2>SuministrosLista</h2>
 </div>
    <div class="container-fluid">
-        
-   </div>
+        @foreach(var s in Model.ListaArticulos)
+        {
+            <div>
+                <h3>@s.Nombre</h3>
+                @s.Descripcion
+                <h4>@s.FechaAlta.ToShortDateString()</h4>
+            </div>
+        }
 
+      
+   </div>
+<div class="btn-group pull-right">
+    @Html.PageLinks(Model.PaginaInfo , x => Url.Action("SuministrosLista", new { pagina = x }))
+</div>

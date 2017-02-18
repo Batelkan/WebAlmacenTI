@@ -176,7 +176,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlHelpers\PaginHelper.cs" />
     <Compile Include="Infraestructura1\NinjectDependenciaResuelta.cs" />
+    <Compile Include="Models\PaginacionInfo.cs" />
     <Compile Include="Models\SuministroViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
