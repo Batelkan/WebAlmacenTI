@@ -13,7 +13,7 @@ namespace WebUI.Controllers
     public class SuministroController : Controller
     {
         private ISuministroRespositorio repositorio;
-        public int paginaTamaño = 5;
+        public int paginaTamaño = 15;
         // GET: Suministro
         
        public SuministroController(ISuministroRespositorio repo)

@@ -13,7 +13,12 @@ namespace WebUI.HtmlHelpers
         public static MvcHtmlString PageLinks(this HtmlHelper html, PaginacionInfo paginInfo, Func<int, string> paginaURL)
         {
             StringBuilder result = new StringBuilder();
-            for(int i= 1; i< paginInfo.TotalPaginas;i++)
+
+            //TagBuilder tagBtnAntes = new TagBuilder("a");
+            //tagBtnAntes.MergeAttribute("href", paginaURL(1));
+            //tagBtnAntes.InnerHtml = "1";
+
+            for (int i= 1; i< paginInfo.TotalPaginas;i++)
             {
                 TagBuilder tag = new TagBuilder("a");
                 tag.MergeAttribute("href",paginaURL(i));

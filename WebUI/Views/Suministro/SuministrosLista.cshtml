@@ -12,16 +12,38 @@
     <h2>SuministrosLista</h2>
 </div>
    <div class="container-fluid">
-        @foreach(var s in Model.ListaArticulos)
-        {
-            <div>
-                <h3>@s.Nombre</h3>
-                @s.Descripcion
-                <h4>@s.FechaAlta.ToShortDateString()</h4>
-            </div>
-        }
+       <br />
+       <table class="table table-sm table-hover table-responsive tablaSuministro">
+           <thead>
+               <tr>
+                   <th>ID</th>
+                   <th>Categoria</th>
+                   <th>Fabricante</th>
+                   <th>Modelo</th>
+                   <th>Factura</th>
+                   <th>Estatus</th>
+                   <th>Fecha Entrada</th>
+               </tr>
+           </thead>
+           <tbody> 
+               @{ int i = 0; }
+               @{ string fondoCelda = "bg-success";}
 
-      
+               @foreach (var s in Model.ListaArticulos)
+               { i++;
+                   fondoCelda = (i%2==0? "bg-success" : "whiteRow");
+                    <tr class="@fondoCelda" >
+                       <th scope="row">@s.ID</th>
+                       <td>@s.Tipo</td>
+                       <td>@s.Fabricante</td>
+                       <td>@s.Modelo</td>
+                       <td>@s.Factura</td>
+                       <td>@s.Estatus</td>
+                       <td>@s.FechaAlta.ToShortDateString()</td>
+                   </tr>
+               }
+           </tbody>
+       </table>
    </div>
 <div class="btn-group pull-right">
     @Html.PageLinks(Model.PaginaInfo , x => Url.Action("SuministrosLista", new { pagina = x }))

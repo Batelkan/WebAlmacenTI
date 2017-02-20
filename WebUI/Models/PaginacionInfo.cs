@@ -10,6 +10,8 @@ namespace WebUI.Models
         public int ItemsTotales { get; set; }
         public int ItemPorPagina { get; set; }
         public int PaginaActual { get; set; }
+        public int PaginaInicia {get; set;}
+        public int PaginaFinal { get; set; }
         public int TotalPaginas
         {
             get { return (int)Math.Ceiling( (decimal)ItemsTotales/ ItemPorPagina); }
