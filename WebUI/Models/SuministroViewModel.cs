@@ -10,5 +10,6 @@ namespace WebUI.Models
     {
        public IEnumerable<Articulos> ListaArticulos { get; set; }
        public PaginacionInfo PaginaInfo { get; set; }
+         public int itemsPorPagina {get;set;}
     }
 }

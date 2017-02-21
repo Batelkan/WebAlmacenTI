@@ -19,23 +19,25 @@ namespace WebUI.Controllers
        public SuministroController(ISuministroRespositorio repo)
         {
             repositorio = repo;
+        
         }
 
-        public ViewResult SuministrosLista(int pagina = 1)
+        public ViewResult SuministrosLista(int pagina = 1,int NumItems = 15)
         {
-
+      
             SuministroViewModel model = new SuministroViewModel()
             {
                 ListaArticulos = repositorio.Suministros
                 .OrderBy(s => s.FechaAlta)
-                .Skip((pagina - 1) * paginaTamaño)
-                .Take(paginaTamaño),
+                .Skip((pagina - 1) * NumItems)
+                .Take(NumItems),
                 PaginaInfo = new PaginacionInfo
                 {
                     PaginaActual = pagina,
-                    ItemPorPagina = paginaTamaño,
+                    ItemPorPagina = NumItems,
                     ItemsTotales = repositorio.Suministros.Count()
-                }
+                },
+                itemsPorPagina = NumItems
             };
 
             return View(model);

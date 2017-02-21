@@ -9,20 +9,30 @@
 <link href="~/Content/Suministros.css" rel="stylesheet" />
 
 <div class="container-fluid Cabecera">
-    <h2>SuministrosLista</h2>
+    <h2>Lista de Suministros</h2>
 </div>
    <div class="container-fluid">
        <br />
+       <div class="tablaSuministroCabezera">
+           @using (Html.BeginForm("SuministrosLista", "Suministro", FormMethod.Get))
+           {
+
+                    <input id="hidcategoryId" name="categoryId" type="hidden" />
+                    @Html.DropDownList("NumItems", new SelectList(new Dictionary<string, int>
+                    { { "15", 15 }, { "25", 25 }, { "50", 50 } , { "100", 100 }}, "Key", "Value"), new { onchange = "this.form.submit();" })
+             
+           }
+</div>
        <table class="table table-sm table-hover table-responsive tablaSuministro">
            <thead>
                <tr>
-                   <th>ID</th>
-                   <th>Categoria</th>
-                   <th>Fabricante</th>
-                   <th>Modelo</th>
-                   <th>Factura</th>
-                   <th>Estatus</th>
-                   <th>Fecha Entrada</th>
+                   <th class="col-sm-1">ID</th>
+                   <th class="col-sm-2">Categoria</th>
+                   <th class="col-sm-2">Fabricante</th>
+                   <th class="col-sm-2">Modelo</th>
+                   <th class="col-sm-2">Factura</th>
+                   <th class="col-sm-2">Estatus</th>
+                   <th class="col-sm-1">Fecha Entrada</th>
                </tr>
            </thead>
            <tbody> 
@@ -33,13 +43,13 @@
                { i++;
                    fondoCelda = (i%2==0? "bg-success" : "whiteRow");
                     <tr class="@fondoCelda" >
-                       <th scope="row">@s.ID</th>
-                       <td>@s.Tipo</td>
-                       <td>@s.Fabricante</td>
-                       <td>@s.Modelo</td>
-                       <td>@s.Factura</td>
-                       <td>@s.Estatus</td>
-                       <td>@s.FechaAlta.ToShortDateString()</td>
+                       <th  class="col-sm-1" scope="row">@s.ID</th>
+                       <td  class="col-sm-2">@s.Tipo</td>
+                       <td  class="col-sm-2">@s.Fabricante</td>
+                       <td  class="col-sm-2">@s.Modelo</td>
+                       <td  class="col-sm-2">@s.Factura</td>
+                       <td  class="col-sm-2">@s.Estatus</td>
+                       <td  class="col-sm-1">@s.FechaAlta.ToShortDateString()</td>
                    </tr>
                }
            </tbody>
@@ -48,3 +58,4 @@
 <div class="btn-group pull-right">
     @Html.PageLinks(Model.PaginaInfo , x => Url.Action("SuministrosLista", new { pagina = x }))
 </div>
+
