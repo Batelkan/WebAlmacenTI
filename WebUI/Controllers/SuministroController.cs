@@ -22,12 +22,13 @@ namespace WebUI.Controllers
         
         }
 
-        public ViewResult SuministrosLista(int pagina = 1,int NumItems = 15)
+        public ViewResult SuministrosLista(int pagina = 1, int NumItems = 15)
         {
       
             SuministroViewModel model = new SuministroViewModel()
             {
                 ListaArticulos = repositorio.Suministros
+                
                 .OrderBy(s => s.FechaAlta)
                 .Skip((pagina - 1) * NumItems)
                 .Take(NumItems),

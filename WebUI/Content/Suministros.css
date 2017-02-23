@@ -12,12 +12,59 @@
 .whiteRow 
  { background-color:#fff!important; }
 
+.btnItems{
+    font-size:12px;
+  
+     text-align:center;
+}
+
 .tablaSuministro
 {
-    font-size:10px;
+    font-size:12px;
     border:1px solid #ccc;
 }
 
 .tablaSuministroCabezera {
 background-color:#b7c0d1;
+}
+
+.FilaSuministro{
+    background-color:#fbfaf8;
+    border-bottom: 1px solid #ccc;
+    font-weight:bold;
+}
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 10px;
+  border-radius: 15px;
+}
+
+.btn-circle-paginacion {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  font-size: 12px;
+  font-weight:bold;
+  border-radius: 15px;
+}
+
+.table-striped> tbody > tr >th,
+.table-striped> tbody > tr >td {
+	background-color: #fbfaf8;
+    border-bottom: 1px solid #ccc;
+    
+}
+
+.FilasHeaders{
+    font-size:small;
+    font-weight:normal;
+    color:#90A4AE;
+}
+
+.FilasTexto{
+    color:#263238;
 }

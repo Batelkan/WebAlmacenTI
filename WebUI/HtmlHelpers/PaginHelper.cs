@@ -15,25 +15,6 @@ namespace WebUI.HtmlHelpers
         {
             StringBuilder result = new StringBuilder();
           
-            //TagBuilder tagBtnAntes = new TagBuilder("a");
-            //tagBtnAntes.MergeAttribute("href", paginaURL(1));
-            //tagBtnAntes.InnerHtml = "1";
-
-            //for (int i= 1; i< paginInfo.TotalPaginas;i++)
-            //{
-            //    TagBuilder tag = new TagBuilder("a");
-            //    tag.MergeAttribute("href",paginaURL(i));
-            //    tag.InnerHtml = i.ToString();
-            //    if(i== paginInfo.PaginaActual)
-            //    {
-            //        tag.AddCssClass("selected");
-            //        tag.AddCssClass("btn-primary");
-            //    }
-
-            //    tag.AddCssClass("btn btn-default");
-            //    result.Append(tag.ToString());
-            //}
-
             const int maxPages =6;
 
             if (paginInfo.TotalPaginas <= maxPages)
@@ -112,7 +93,7 @@ namespace WebUI.HtmlHelpers
                     tag.AddCssClass("selected");
                     tag.AddCssClass("btn-primary");
                 }
-                tag.AddCssClass("btn btn-default");
+                tag.AddCssClass("btn btn-circle-paginacion");
                 resultado.Append(tag.ToString());
 
             }

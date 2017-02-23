@@ -9,22 +9,57 @@
 <link href="~/Content/Suministros.css" rel="stylesheet" />
 
 <div class="container-fluid Cabecera">
-    <h2>Lista de Suministros</h2>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Lista de Suministros</h2>
+            </div>
+            <div class="col-md-4">
+              
+            </div>
+            <div class="col-md-4">
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4">
+                <div class="dropdown pull-right">
+                    <button class="btn btn-primary dropdown-toggle btnItems" type="button" data-toggle="dropdown">
+                        Items
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("15", "SuministrosLista", new { pagina = 1, NumItems = 15 })</li>
+                        <li>@Html.ActionLink("25", "SuministrosLista", new { pagina = 1, NumItems = 25 })</li>
+                        <li>@Html.ActionLink("50", "SuministrosLista", new { pagina = 1, NumItems = 50 })</li>
+                        <li>@Html.ActionLink("100", "SuministrosLista", new { pagina = 1, NumItems = 100 })</li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+
+                <div class="pull-right">
+                    @Html.PageLinks(Model.PaginaInfo, x => Url.Action("SuministrosLista", new { pagina = x, NumItems = Model.itemsPorPagina }))
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>
+
    <div class="container-fluid">
        <br />
-       <div class="tablaSuministroCabezera">
-           @using (Html.BeginForm("SuministrosLista", "Suministro", FormMethod.Get))
-           {
+       <div class="container-fluid tablaSuministroCabezera">
+       
 
-                    <input id="hidcategoryId" name="categoryId" type="hidden" />
-                    @Html.DropDownList("NumItems", new SelectList(new Dictionary<string, int>
-                    { { "15", 15 }, { "25", 25 }, { "50", 50 } , { "100", 100 }}, "Key", "Value"), new { onchange = "this.form.submit();" })
-             
-           }
-</div>
-       <table class="table table-sm table-hover table-responsive tablaSuministro">
-           <thead>
+       </div>
+       <table class="table table-sm table-hover table-responsive tablaSuministro table-striped">
+           @*<thead>
                <tr>
                    <th class="col-sm-1">ID</th>
                    <th class="col-sm-2">Categoria</th>
@@ -34,7 +69,7 @@
                    <th class="col-sm-2">Estatus</th>
                    <th class="col-sm-1">Fecha Entrada</th>
                </tr>
-           </thead>
+           </thead>*@
            <tbody> 
                @{ int i = 0; }
                @{ string fondoCelda = "bg-success";}
@@ -42,20 +77,29 @@
                @foreach (var s in Model.ListaArticulos)
                { i++;
                    fondoCelda = (i%2==0? "bg-success" : "whiteRow");
-                    <tr class="@fondoCelda" >
+                    <tr class="FilaSuministro" >
                        <th  class="col-sm-1" scope="row">@s.ID</th>
-                       <td  class="col-sm-2">@s.Tipo</td>
-                       <td  class="col-sm-2">@s.Fabricante</td>
-                       <td  class="col-sm-2">@s.Modelo</td>
-                       <td  class="col-sm-2">@s.Factura</td>
-                       <td  class="col-sm-2">@s.Estatus</td>
-                       <td  class="col-sm-1">@s.FechaAlta.ToShortDateString()</td>
+                       <td  class="col-sm-6"><span class="FilasHeaders" >Suministro</span><br /><span class="FilasTexto">@s.Tipo  @s.Fabricante @s.Modelo</span></td>
+                       <td  class="col-sm-1"><span class="FilasHeaders">Cantidad</span><br /><span>@s.Cantidad</span></td>
+                       <td  class="col-sm-1"><span class="FilasHeaders">Estatus</span><br /> <span>@s.Estatus</span> </td>
+                       <td  class="col-sm-1"><spam class="FilasHeaders">Fecha reg.</spam><br /> <spam>@s.FechaAlta.ToShortDateString()</spam> </td>
+                       <td class="col-sm-2">
+                           <button class="btn btn-primary btn-circle" type="button" data-toggle="collapse" data-target="#DetallesFila@(i)" aria-expanded="false" aria-controls="DetallesControl">
+                               <i class="glyphicon glyphicon-list" style="font-size:small"></i>
+                            </button>
+                       </td>
+                   </tr>
+                   <tr class="collapse" id="DetallesFila@(i)">
+                       <td class="col-sm-2">@s.Descripcion</td>
+                       <td class="col-sm-2">@s.Observaciones</td>
+                       <td class="col-sm-2">@s.Serie</td>
                    </tr>
                }
            </tbody>
        </table>
    </div>
-<div class="btn-group pull-right">
-    @Html.PageLinks(Model.PaginaInfo , x => Url.Action("SuministrosLista", new { pagina = x }))
-</div>
 
+
+<script>
+    $('.dropdown-toggle').dropdown()
+</script>
