@@ -10,23 +10,27 @@
 
 <div class="container-fluid Cabecera">
     
-    <div class="container-fluid">
+    <div class="container-fluid CabeceraContenido">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 hborderB">
                 <h2>Lista de Suministros</h2>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 hborderB">
               
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 hborderB">
                 
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 vBorderR">
 
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 vBorderR">
+                <div>
+                    <spam>Cantidad de suministros por pagina</spam>
+                </div>
+                <br />
                 <div class="dropdown pull-right">
                     <button class="btn btn-primary dropdown-toggle btnItems" type="button" data-toggle="dropdown">
                         Items
@@ -51,12 +55,34 @@
         </div>
     </div>
 </div>
-
    <div class="container-fluid">
        <br />
-       <div class="container-fluid tablaSuministroCabezera">
-       
-
+       <div class="container-fluid tablaSuministroCabezera searchInputGroup">
+           <div class="row">
+               <div class="col-md-6 pull-right ">
+                   <div class="input-group">
+                       <div class="input-group-btn search-panel">
+                           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                               <span id="search_concept">Campo</span> <span class="caret"></span>
+                           </button>
+                           <ul class="dropdown-menu" role="menu">
+                               <li><a href="#contains">Categoria</a></li>
+                               <li><a href="#its_equal">Factura</a></li>
+                               <li><a href="#greather_than">Disponibilidad</a></li>
+                               <li><a href="#less_than">Modelo</a></li>
+                               <li><a href="#less_than">Fabricante</a></li>
+                               <li class="divider"></li>
+                               <li><a href="#all">Anything</a></li>
+                           </ul>
+                       </div>
+                       <input type="hidden" name="search_param" value="all" id="search_param">
+                       <input type="text" class="form-control" name="x" placeholder="termino de busqueda...">
+                       <span class="input-group-btn">
+                           <button class="btn btn-default" style="height:34px" type="button"><span class="glyphicon glyphicon-search" style="font-size:12px"></span></button>
+                       </span>
+                   </div>
+               </div>
+           </div>
        </div>
        <table class="table table-sm table-hover table-responsive tablaSuministro table-striped">
            @*<thead>
@@ -101,5 +127,14 @@
 
 
 <script>
-    $('.dropdown-toggle').dropdown()
+    $('.dropdown-toggle').dropdown();
+
+    $(document).ready(function (e) {
+        $('.search-panel .dropdown-menu').find('a').click(function (e) {
+            e.preventDefault();
+            var concept = $(this).text();
+            $('.search-panel span#search_concept').text(concept);
+            $('.input-group #search_param').val(param);
+        });
+    });
 </script>

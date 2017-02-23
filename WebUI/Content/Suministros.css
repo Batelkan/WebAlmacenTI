@@ -4,6 +4,11 @@
 .Cabecera {
  border-bottom: 1px solid #ccc;
 }
+
+.CabeceraContenido{
+    margin:10px;
+}
+
 .Contenido
 {
     border:1px solid #ccc;
@@ -21,13 +26,36 @@
 .tablaSuministro
 {
     font-size:12px;
-    border:1px solid #ccc;
+
+
 }
+
+.vBorderR
+{
+border-right: 1px dotted  #ccc;
+
+
+}
+
+.hborderB
+{
+    border-bottom: 1px dotted #ccc;
+
+  
+}
+
 
 .tablaSuministroCabezera {
-background-color:#b7c0d1;
+    background-color:#b7c0d1;
+    min-height:70px;
+   
 }
 
+.searchInputGroup{
+    display:inline-block;
+    vertical-align:middle;
+    padding-top:15px;
+}
 .FilaSuministro{
     background-color:#fbfaf8;
     border-bottom: 1px solid #ccc;
