@@ -1,38 +1,26 @@
 ﻿body {
 }
 
-.Cabecera {
- border-bottom: 1px solid #ccc;
+.Cabecera {border-bottom: 1px solid #ccc;}
 
-}
+.CabeceraContenido{margin:10px;}
 
-.Cuerpo{
-
-}
-
-.CabeceraContenido{
-    margin:10px;
-}
-
-.Contenido
-{
-    border:1px solid #ccc;
-}
-
-.whiteRow 
- { background-color:#fff!important; }
+.Contenido{ border:1px solid #ccc;}
 
 .btnItems{
     font-size:12px;
-  
-     text-align:center;
+    text-align:center;
 }
 
 .tablaSuministro
 {
     font-size:12px;
+}
 
-
+.tablaSuministroCabezera {
+    background-color:#b7c0d1;
+    min-height:70px; 
+    width:100%;
 }
 
 .vBorderR
@@ -42,24 +30,13 @@ border-right: 1px dotted  #ccc;
 
 }
 
-.hborderB
-{
-    border-bottom: 1px dotted #ccc;
-
-  
-}
-
-
-.tablaSuministroCabezera {
-    background-color:#b7c0d1;
-    min-height:70px;
-   
-}
+.hborderB{ border-bottom: 1px dotted #ccc;}
 
 .searchInputGroup{
-    display:inline-block;
+    display:inline;
     vertical-align:middle;
     padding-top:15px;
+    width:100%;
 }
 .FilaSuministro{
     background-color:#fbfaf8;
@@ -98,6 +75,9 @@ border-right: 1px dotted  #ccc;
     color:#90A4AE;
 }
 
-.FilasTexto{
-    color:#263238;
+.FilasTexto{ color:#263238;}
+
+.BusquedaDropDownList
+{
+    min-width:200px;
 }

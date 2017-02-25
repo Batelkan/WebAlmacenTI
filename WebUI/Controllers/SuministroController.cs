@@ -44,64 +44,73 @@ namespace WebUI.Controllers
             return View(model);
         }
 
-        public ViewResult SuministroBusqueda(SuministroViewModel mod)
+        public ViewResult SuministroBusqueda(SuministroViewModel modelo)
         {
 
-            switch(mod.CampoBusqueda)
+            SuministroViewModel mod = new SuministroViewModel();
+            mod.itemsPorPagina = 15;
+        
+
+            switch (modelo.CampoBusqueda)
             {
-                case "Categoria ":
-                    mod.ListaArticulos
+                case "Categoria":
+                    mod.ListaArticulos = repositorio.Suministros
+                        .Where(s => s.Tipo.ToLower().Trim() == modelo.terminoBusqueda.ToLower().Trim())
                         .OrderByDescending(s => s.FechaAlta)
-                        .Where(s => s.Nombre == mod.terminoBusqueda)
                         .Skip((1 - 1) * mod.itemsPorPagina)
                         .Take(mod.itemsPorPagina);
                     break;
                 case "Factura":
-                    mod.ListaArticulos
-                       .OrderByDescending(s => s.FechaAlta)
-                       .Where(s => s.Nombre == mod.terminoBusqueda)
-                       .Skip((1 - 1) * mod.itemsPorPagina)
-                       .Take(mod.itemsPorPagina);
+                    mod.ListaArticulos = repositorio.Suministros
+                     .Where(s => s.Factura.ToLower().Trim() == modelo.terminoBusqueda.ToLower().Trim())
+                     .OrderByDescending(s => s.FechaAlta)
+                     .Skip((1 - 1) * mod.itemsPorPagina)
+                     .Take(mod.itemsPorPagina);
                     break;
                 case "Disponibilidad":
-                    mod.ListaArticulos
-                       .OrderByDescending(s => s.FechaAlta)
-                       .Where(s => s.Nombre == mod.terminoBusqueda)
-                       .Skip((1 - 1) * mod.itemsPorPagina)
-                       .Take(mod.itemsPorPagina);
+                    mod.ListaArticulos = repositorio.Suministros
+                    .Where(s => s.Estatus.ToLower().Trim() == modelo.terminoBusqueda.ToLower().Trim())
+                    .OrderByDescending(s => s.FechaAlta)
+                    .Skip((1 - 1) * mod.itemsPorPagina)
+                    .Take(mod.itemsPorPagina);
                     break;
                 case "Modelo":
-                    mod.ListaArticulos
-                       .OrderByDescending(s => s.FechaAlta)
-                       .Where(s => s.Nombre == mod.terminoBusqueda)
-                       .Skip((1 - 1) * mod.itemsPorPagina)
-                       .Take(mod.itemsPorPagina);
+                    mod.ListaArticulos = repositorio.Suministros
+                     .Where(s => s.Modelo.ToLower().Trim() == modelo.terminoBusqueda.ToLower().Trim())
+                     .OrderByDescending(s => s.FechaAlta)
+                     .Skip((1 - 1) * mod.itemsPorPagina)
+                     .Take(mod.itemsPorPagina);
                     break;
                 case "Fabricante":
-                    mod.ListaArticulos
-                       .OrderByDescending(s => s.FechaAlta)
-                       .Where(s => s.Nombre == mod.terminoBusqueda)
-                       .Skip((1 - 1) * mod.itemsPorPagina)
-                       .Take(mod.itemsPorPagina);
+                    mod.ListaArticulos = repositorio.Suministros
+                     .Where(s => s.Fabricante.ToLower().Trim() == modelo.terminoBusqueda.ToLower().Trim())
+                     .OrderByDescending(s => s.FechaAlta)
+                     .Skip((1 - 1) * mod.itemsPorPagina)
+                     .Take(mod.itemsPorPagina);
                     break;
                 default:
-                    mod.ListaArticulos
+                    mod.ListaArticulos = repositorio.Suministros
                       .OrderByDescending(s => s.FechaAlta)
                       .Skip((1 - 1) * mod.itemsPorPagina)
                       .Take(mod.itemsPorPagina);
                     break;
 
             }
+            mod.PaginaInfo = new PaginacionInfo
+            {
+                PaginaActual = 1,
+                ItemPorPagina = 15,
+                ItemsTotales = mod.ListaArticulos.Count()
+            };
+            // @model SearchViewModel
 
-                    // @model SearchViewModel
-
-                    // @using(Html.BeginForm())
-                    // {
-                    //                @Html.LabelFor(x => x.Query)
-                    //    @Html.EditorFor(x => x.Query)
-                    //    @Html.ValidationMessageFor(x => x.Query)
-                    //    < button type = "submit" > Search </ button >
-                    // }
+            // @using(Html.BeginForm())
+            // {
+            //                @Html.LabelFor(x => x.Query)
+            //    @Html.EditorFor(x => x.Query)
+            //    @Html.ValidationMessageFor(x => x.Query)
+            //    < button type = "submit" > Search </ button >
+            // }
 
             return View("SuministrosLista",mod);
         }

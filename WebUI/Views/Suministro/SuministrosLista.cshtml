@@ -57,10 +57,10 @@
 </div>
    <div class="container-fluid Cuerpo ">
        <br />
-       <div class="container-fluid tablaSuministroCabezera searchInputGroup">
+       <div class="container-fluid tablaSuministroCabezera">
            <div class="row">
-               <div class="col-md-6 pull-right ">
-                   <div class="input-group">
+               <div class="col-md-6 pull-right  ">
+                   @*<div class="input-group">
                        <div class="input-group-btn search-panel">
                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                <span id="search_concept">Campo</span> <span class="caret"></span>
@@ -80,7 +80,21 @@
                        <span class="input-group-btn">
                            <button class="btn btn-default" style="height:34px" type="button"><span class="glyphicon glyphicon-search" style="font-size:12px"></span></button>
                        </span>
-                   </div>
+                   </div>*@
+                   <div class="input-group searchInputGroup">
+                       @using (Html.BeginForm("SuministroBusqueda", "Suministro"))
+                       {
+                      @Html.DropDownListFor(Model => Model.CampoBusqueda, new SelectListItem[]
+                       { new SelectListItem() { Text = "Categoria", Value = "Categoria" },
+                          new SelectListItem() { Text = "Factura", Value = "Factura" },
+                          new SelectListItem() { Text = "Disponibilidad", Value = "Disponibilidad" },
+                          new SelectListItem() { Text = "Modelo", Value = "Modelo" },
+                          new SelectListItem() { Text = "Fabricante", Value = "Fabricante" }},
+                          new { @class = "form-control BusquedaDropDownList" })
+                       @Html.TextBoxFor(Model => Model.terminoBusqueda, "Termino a buscar",new { @class= "form-control" })
+                       <button class="btn btn-default" style="height:34px" type="submit"><span class="glyphicon glyphicon-search" style="font-size:12px"></span></button>
+                       }
+                    </div>
                </div>
            </div>
        </div>
