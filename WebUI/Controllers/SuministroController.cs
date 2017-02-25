@@ -40,53 +40,62 @@ namespace WebUI.Controllers
                 },
                 itemsPorPagina = NumItems
             };
-
+            
             return View(model);
         }
 
         public ViewResult SuministroBusqueda(SuministroViewModel modelo)
         {
+            if(modelo.terminoBusqueda == null)
+            {
+                SuministroViewModel modIfEmpty = new SuministroViewModel()
+                {
+                    ListaArticulos = repositorio.Suministros
+                      .OrderBy(s => s.FechaAlta)
+                      .Skip((1 - 1) * 15)
+                      .Take(15),
+                    PaginaInfo = new PaginacionInfo
+                    {
+                        PaginaActual = 1,
+                        ItemPorPagina = 15,
+                        ItemsTotales = repositorio.Suministros.Count()
+                    },
+                    itemsPorPagina = 15
+                };
+
+                return View("SuministrosLista", modIfEmpty);
+            }
 
             SuministroViewModel mod = new SuministroViewModel();
             mod.itemsPorPagina = 15;
-        
 
             switch (modelo.CampoBusqueda)
             {
                 case "Categoria":
                     mod.ListaArticulos = repositorio.Suministros
                         .Where(s => s.Tipo.ToLower().Trim() == modelo.terminoBusqueda.ToLower().Trim())
-                        .OrderByDescending(s => s.FechaAlta)
-                        .Skip((1 - 1) * mod.itemsPorPagina)
-                        .Take(mod.itemsPorPagina);
+                        .OrderByDescending(s => s.FechaAlta);
                     break;
                 case "Factura":
                     mod.ListaArticulos = repositorio.Suministros
                      .Where(s => s.Factura.ToLower().Trim() == modelo.terminoBusqueda.ToLower().Trim())
-                     .OrderByDescending(s => s.FechaAlta)
-                     .Skip((1 - 1) * mod.itemsPorPagina)
-                     .Take(mod.itemsPorPagina);
+                     .OrderByDescending(s => s.FechaAlta);
+                
                     break;
                 case "Disponibilidad":
                     mod.ListaArticulos = repositorio.Suministros
                     .Where(s => s.Estatus.ToLower().Trim() == modelo.terminoBusqueda.ToLower().Trim())
-                    .OrderByDescending(s => s.FechaAlta)
-                    .Skip((1 - 1) * mod.itemsPorPagina)
-                    .Take(mod.itemsPorPagina);
+                    .OrderByDescending(s => s.FechaAlta);
                     break;
                 case "Modelo":
                     mod.ListaArticulos = repositorio.Suministros
                      .Where(s => s.Modelo.ToLower().Trim() == modelo.terminoBusqueda.ToLower().Trim())
-                     .OrderByDescending(s => s.FechaAlta)
-                     .Skip((1 - 1) * mod.itemsPorPagina)
-                     .Take(mod.itemsPorPagina);
+                     .OrderByDescending(s => s.FechaAlta);
                     break;
                 case "Fabricante":
                     mod.ListaArticulos = repositorio.Suministros
                      .Where(s => s.Fabricante.ToLower().Trim() == modelo.terminoBusqueda.ToLower().Trim())
-                     .OrderByDescending(s => s.FechaAlta)
-                     .Skip((1 - 1) * mod.itemsPorPagina)
-                     .Take(mod.itemsPorPagina);
+                     .OrderByDescending(s => s.FechaAlta);
                     break;
                 default:
                     mod.ListaArticulos = repositorio.Suministros
@@ -96,21 +105,31 @@ namespace WebUI.Controllers
                     break;
 
             }
-            mod.PaginaInfo = new PaginacionInfo
-            {
-                PaginaActual = 1,
-                ItemPorPagina = 15,
-                ItemsTotales = mod.ListaArticulos.Count()
-            };
-            // @model SearchViewModel
 
-            // @using(Html.BeginForm())
-            // {
-            //                @Html.LabelFor(x => x.Query)
-            //    @Html.EditorFor(x => x.Query)
-            //    @Html.ValidationMessageFor(x => x.Query)
-            //    < button type = "submit" > Search </ button >
-            // }
+            if (!mod.ListaArticulos.Any())
+            {
+                mod.ListaArticulos = repositorio.Suministros
+                   .OrderByDescending(s => s.FechaAlta)
+                   .Skip((1 - 1) * 15)
+                   .Take(15);
+                mod.PaginaInfo = new PaginacionInfo
+                {
+                    PaginaActual = 1,
+                    ItemPorPagina = 15,
+                    ItemsTotales = repositorio.Suministros.Count()
+                };
+
+            }
+
+            else
+            {
+                mod.PaginaInfo = new PaginacionInfo
+                {
+                    PaginaActual = 1,
+                    ItemPorPagina = mod.ListaArticulos.Count(),
+                    ItemsTotales = mod.ListaArticulos.Count()
+                };
+            }
 
             return View("SuministrosLista",mod);
         }

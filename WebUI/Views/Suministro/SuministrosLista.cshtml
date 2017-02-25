@@ -12,43 +12,34 @@
     
     <div class="container-fluid CabeceraContenido">
         <div class="row">
-            <div class="col-md-4 hborderB">
+            <div class="">
                 <h2>Lista de Suministros</h2>
-            </div>
-            <div class="col-md-4 hborderB">
-              
-            </div>
-            <div class="col-md-4 hborderB">
-                
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 vBorderR">
-
-            </div>
-            <div class="col-md-4 vBorderR">
-                <div>
-                    <spam>Cantidad de suministros por pagina</spam>
-                </div>
-                <br />
-                <div class="dropdown pull-right">
-                    <button class="btn btn-primary dropdown-toggle btnItems" type="button" data-toggle="dropdown">
-                        Items
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li>@Html.ActionLink("15", "SuministrosLista", new { pagina = 1, NumItems = 15 })</li>
-                        <li>@Html.ActionLink("25", "SuministrosLista", new { pagina = 1, NumItems = 25 })</li>
-                        <li>@Html.ActionLink("50", "SuministrosLista", new { pagina = 1, NumItems = 50 })</li>
-                        <li>@Html.ActionLink("100", "SuministrosLista", new { pagina = 1, NumItems = 100 })</li>
-                    </ul>
-                </div>
-
-            </div>
-            <div class="col-md-4">
-
-                <div class="pull-right">
-                    @Html.PageLinks(Model.PaginaInfo, x => Url.Action("SuministrosLista", new { pagina = x, NumItems = Model.itemsPorPagina }))
+            <div class="col-md-offset-4 col-md-8">
+                <div class="searchInputGroup">
+                        @using (Html.BeginForm("SuministroBusqueda", "Suministro", null, FormMethod.Post, new { @class = "form-inline  pull-right", role = "form" }))
+                        {
+                            <div class="input-group">
+                                <div class="input-group-btn">
+                                    @Html.DropDownListFor(Model => Model.CampoBusqueda, new SelectListItem[]
+                           { new SelectListItem() { Text = "Categoria", Value = "Categoria" },
+                              new SelectListItem() { Text = "Factura", Value = "Factura" },
+                              new SelectListItem() { Text = "Disponibilidad", Value = "Disponibilidad" },
+                              new SelectListItem() { Text = "Modelo", Value = "Modelo" },
+                              new SelectListItem() { Text = "Fabricante", Value = "Fabricante" }},
+                              new { @class = "form-control BusquedaDropDownList ml-sm-0 mr-sm-0" })
+                                </div>
+                                <div class="">
+                                    @Html.TextBoxFor(Model => Model.terminoBusqueda, "Termino a buscar", new { @class = "form-control BusquedaTextBox ml-sm-0 mr-sm-0" })
+                                </div>
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" style="height:34px" type="submit"><span class="glyphicon glyphicon-search" style="font-size:12px"></span></button>
+                                </div>
+                                </div>
+                        }
+                   
                 </div>
 
             </div>
@@ -59,42 +50,31 @@
        <br />
        <div class="container-fluid tablaSuministroCabezera">
            <div class="row">
-               <div class="col-md-6 pull-right  ">
-                   @*<div class="input-group">
-                       <div class="input-group-btn search-panel">
-                           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                               <span id="search_concept">Campo</span> <span class="caret"></span>
-                           </button>
-                           <ul class="dropdown-menu" role="menu">
-                               <li><a href="#contains">Categoria</a></li>
-                               <li><a href="#its_equal">Factura</a></li>
-                               <li><a href="#greather_than">Disponibilidad</a></li>
-                               <li><a href="#less_than">Modelo</a></li>
-                               <li><a href="#less_than">Fabricante</a></li>
-                               <li class="divider"></li>
-                               <li><a href="#all">Anything</a></li>
-                           </ul>
-                       </div>
-                       <input type="hidden" name="search_param" value="all" id="search_param">
-                       <input type="text" class="form-control" name="x" placeholder="termino de busqueda...">
-                       <span class="input-group-btn">
-                           <button class="btn btn-default" style="height:34px" type="button"><span class="glyphicon glyphicon-search" style="font-size:12px"></span></button>
-                       </span>
-                   </div>*@
-                   <div class="input-group searchInputGroup">
-                       @using (Html.BeginForm("SuministroBusqueda", "Suministro"))
-                       {
-                      @Html.DropDownListFor(Model => Model.CampoBusqueda, new SelectListItem[]
-                       { new SelectListItem() { Text = "Categoria", Value = "Categoria" },
-                          new SelectListItem() { Text = "Factura", Value = "Factura" },
-                          new SelectListItem() { Text = "Disponibilidad", Value = "Disponibilidad" },
-                          new SelectListItem() { Text = "Modelo", Value = "Modelo" },
-                          new SelectListItem() { Text = "Fabricante", Value = "Fabricante" }},
-                          new { @class = "form-control BusquedaDropDownList" })
-                       @Html.TextBoxFor(Model => Model.terminoBusqueda, "Termino a buscar",new { @class= "form-control" })
-                       <button class="btn btn-default" style="height:34px" type="submit"><span class="glyphicon glyphicon-search" style="font-size:12px"></span></button>
-                       }
-                    </div>
+               <div class="col-md-4"></div>
+               <div class="col-md-3">
+
+                   <div>
+                       <spam>Cantidad de suministros por pagina</spam>
+                   </div>
+                   <br />
+                   <div class="dropdown pull-right">
+                       <button class="btn btn-primary dropdown-toggle btnItems" type="button" data-toggle="dropdown">
+                           Items
+                           <span class="caret"></span>
+                       </button>
+                       <ul class="dropdown-menu">
+                           <li>@Html.ActionLink("15", "SuministrosLista", new { pagina = 1, NumItems = 15 })</li>
+                           <li>@Html.ActionLink("25", "SuministrosLista", new { pagina = 1, NumItems = 25 })</li>
+                           <li>@Html.ActionLink("50", "SuministrosLista", new { pagina = 1, NumItems = 50 })</li>
+                           <li>@Html.ActionLink("100", "SuministrosLista", new { pagina = 1, NumItems = 100 })</li>
+                       </ul>
+                   </div>
+
+               </div>
+               <div class="col-md-5">
+                   <div class="pull-right">
+                       @Html.PageLinks(Model.PaginaInfo, x => Url.Action("SuministrosLista", new { pagina = x, NumItems = Model.itemsPorPagina }))
+                   </div>
                </div>
            </div>
        </div>
