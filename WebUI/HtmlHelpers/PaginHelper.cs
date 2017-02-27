@@ -90,8 +90,8 @@ namespace WebUI.HtmlHelpers
                 }
                 if (i == paginaAct)
                 {
-                    tag.AddCssClass("selected");
-                    tag.AddCssClass("btn-primary");
+                    //tag.AddCssClass("selected");
+                    tag.AddCssClass("btn-circle-paginacion-Seleccion" );
                 }
                 tag.AddCssClass("btn btn-circle-paginacion");
                 resultado.Append(tag.ToString());
