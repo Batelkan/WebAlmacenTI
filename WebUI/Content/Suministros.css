@@ -1,9 +1,9 @@
 ﻿body {
 }
 
-.Cabecera {border-bottom: 1px solid #ccc;}
+.Cabecera {border-bottom: 1px solid #ccc; max-height:80px}
 
-.CabeceraContenido{margin:10px;}
+
 
 .Contenido{ border:1px solid #ccc;}
 
@@ -101,6 +101,7 @@
 
 .searchInputGroup{
     width:100%;
+    padding-top:11px;
 }
 
 .BusquedaDropDownList
@@ -112,12 +113,14 @@
 }
 
 .fixTopSuministros{
-    margin-top: 70px;
-    margin-left: 130px;
-    margin-right: 15px;
-    background-color:#f3f3fb;
+    background-color: #f3f3fb;
+    width: calc(100% - 9.9%);
+    position: fixed;
+    margin-top: 50px;
 }
 
 .fixTopTablaSuministros{
-        margin-top: 174px;
+    margin-top: 174px;
+    margin-left:0px;
+    width:100%;
 }

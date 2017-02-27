@@ -8,17 +8,14 @@
 
 <link href="~/Content/Suministros.css" rel="stylesheet" />
 
-<div class="nav navbar-fixed-top fixTopSuministros">
+<div class="fixTopSuministros">
     <div class="container-fluid Cabecera">
-
-        <div class="container-fluid CabeceraContenido">
+        <div class="container-fluid">
             <div class="row">
-
-                <div class="col-md-4 pull-left" style="text-align:center; vertical-align:middle">
-                    <h2>Lista de Suministros</h2>
+                <div class="col-md-4 pull-left">
+                    <h3>Lista de Suministros</h3>
                 </div>
-
-                <div class=" col-md-8">
+                <div class="col-md-8">
                     <div class="searchInputGroup">
                         @using (Html.BeginForm("SuministroBusqueda", "Suministro", null, FormMethod.Post, new { @class = "form-inline  pull-right", role = "form" }))
                         {
@@ -83,7 +80,7 @@
 
 </div>
 
-<div class="container-fluid fixTopTablaSuministros">
+<div class="container fixTopTablaSuministros">
     <table class="table table-sm table-hover table-responsive tablaSuministro table-striped">
         @*<thead>
                 <tr>
@@ -112,7 +109,7 @@
                     <td class="col-sm-1"><spam class="FilasHeaders">Fecha reg.</spam><br /> <spam>@s.FechaAlta.ToShortDateString()</spam> </td>
                     <td class="col-sm-2">
                         <button class="btn btn-primary btn-circle" type="button" data-toggle="collapse" data-target="#DetallesFila@(i)" aria-expanded="false" aria-controls="DetallesControl">
-                            <i class="glyphicon glyphicon-list" style="font-size:small"></i>
+                            <i class="glyphicon glyphicon-list" style="font-size:small;position:static !important"></i>
                         </button>
                     </td>
                 </tr>

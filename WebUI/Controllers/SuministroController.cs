@@ -66,6 +66,8 @@ namespace WebUI.Controllers
                 return View("SuministrosLista", modIfEmpty);
             }
 
+
+
             SuministroViewModel mod = new SuministroViewModel();
             mod.itemsPorPagina = 15;
 
@@ -133,6 +135,7 @@ namespace WebUI.Controllers
 
             return View("SuministrosLista",mod);
         }
+
 
     }
 }
