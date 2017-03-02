@@ -13,6 +13,8 @@ namespace WebUI.Models
        public int itemsPorPagina {get;set;}
        public string CampoBusqueda { get; set; }
        public string terminoBusqueda { get; set; }
+       public string OrdenFecha { get; set; }
+
 
     }
 }

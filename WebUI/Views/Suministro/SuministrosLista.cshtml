@@ -22,12 +22,12 @@
                             <div class="input-group">
                                 <div class="input-group-btn">
                                     @Html.DropDownListFor(Model => Model.CampoBusqueda, new SelectListItem[]
-                           { new SelectListItem() { Text = "Categoria", Value = "Categoria" },
+{ new SelectListItem() { Text = "Categoria", Value = "Categoria" },
                               new SelectListItem() { Text = "Factura", Value = "Factura" },
                               new SelectListItem() { Text = "Disponibilidad", Value = "Disponibilidad" },
                               new SelectListItem() { Text = "Modelo", Value = "Modelo" },
                               new SelectListItem() { Text = "Fabricante", Value = "Fabricante" }},
-                              new { @class = "form-control BusquedaDropDownList ml-sm-0 mr-sm-0" })
+   new { @class = "form-control BusquedaDropDownList ml-sm-0 mr-sm-0" })
                                 </div>
                                 <div class="">
                                     @Html.TextBoxFor(Model => Model.terminoBusqueda, "Termino a buscar", new { @class = "form-control BusquedaTextBox ml-sm-0 mr-sm-0" })
@@ -60,17 +60,17 @@
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("15  items", "SuministrosLista", new { pagina = 1, NumItems = 15 })</li>
-                            <li>@Html.ActionLink("25  items", "SuministrosLista", new { pagina = 1, NumItems = 25 })</li>
-                            <li>@Html.ActionLink("50  items", "SuministrosLista", new { pagina = 1, NumItems = 50 })</li>
-                            <li>@Html.ActionLink("100 items", "SuministrosLista", new { pagina = 1, NumItems = 100 })</li>
+                            <li>@Html.ActionLink("15  items", "SuministrosLista", new { pagina = 1, NumItems = 15, orden = Model.OrdenFecha })</li>
+                            <li>@Html.ActionLink("25  items", "SuministrosLista", new { pagina = 1, NumItems = 25, orden = Model.OrdenFecha })</li>
+                            <li>@Html.ActionLink("50  items", "SuministrosLista", new { pagina = 1, NumItems = 50, orden = Model.OrdenFecha })</li>
+                            <li>@Html.ActionLink("100 items", "SuministrosLista", new { pagina = 1, NumItems = 100, orden = Model.OrdenFecha })</li>
                         </ul>
                     </div>
 
                 </div>
                 <div class="col-md-5 col-md-offset-4">
                     <div class="pull-right">
-                        @Html.PageLinks(Model.PaginaInfo, x => Url.Action("SuministrosLista", new { pagina = x, NumItems = Model.itemsPorPagina }))
+                        @Html.PageLinks(Model.PaginaInfo, x => Url.Action("SuministrosLista", new { pagina = x, NumItems = Model.itemsPorPagina, orden = Model.OrdenFecha }))
                     </div>
                 </div>
             </div>
@@ -82,17 +82,31 @@
 
 <div class="container fixTopTablaSuministros">
     <table class="table table-sm table-hover table-responsive tablaSuministro table-striped">
-        @*<thead>
+        <thead>
                 <tr>
-                    <th class="col-sm-1">ID</th>
-                    <th class="col-sm-2">Categoria</th>
-                    <th class="col-sm-2">Fabricante</th>
-                    <th class="col-sm-2">Modelo</th>
-                    <th class="col-sm-2">Factura</th>
-                    <th class="col-sm-2">Estatus</th>
-                    <th class="col-sm-1">Fecha Entrada</th>
+                    <th class="col-sm-1"></th>
+                    <th class="col-sm-6"></th>
+                    <th class="col-sm-1"></th>
+                    <th class="col-sm-1"></th>
+                    <th class="col-sm-1" style="padding: 5px 0px 2px 0px">
+                        @{ string ord = Model.OrdenFecha == "asc" ? "dsc" : "asc"; }
+                        <a href="@Url.Action("SuministrosLista", "Suministro", new { pagina = 1, NumItems = 15, orden = ord })" style="height:20px;width:100px;background-color: #E0F2F1;padding:0px !important;" class="btn btn-default">
+                          
+                            @if (ord == "asc")
+                            {
+                               
+                                <span class="glyphicon glyphicon-menu-down" style="font-size:12px;display:inline-block;position:static !important" aria-hidden="true"></span>
+                            }
+                            else
+                            {
+                             
+                                <spam class="glyphicon glyphicon-menu-up" style="font-size:12px; display:inline-block;position:static !important" aria-hidden="true"></spam>
+                            }
+                        </a>
+                    </th>
+                    <th class="col-sm-2"></th>
                 </tr>
-            </thead>*@
+            </thead>
         <tbody>
             @{ int i = 0; }
             @{ string fondoCelda = "bg-success";}
@@ -102,7 +116,7 @@
                 i++;
                 fondoCelda = (i % 2 == 0 ? "bg-success" : "whiteRow");
                 <tr class="FilaSuministro">
-                    <th class="col-sm-1" scope="row">@s.ID</th>
+                    <th class="col-sm-1" scope="row"># @s.ID</th>
                     <td class="col-sm-6"><span class="FilasHeaders">Suministro</span><br /><span class="FilasTexto">@s.Tipo  @s.Fabricante @s.Modelo</span></td>
                     <td class="col-sm-1"><span class="FilasHeaders">Cantidad</span><br /><span>@s.Cantidad</span></td>
                     <td class="col-sm-1"><span class="FilasHeaders">Estatus</span><br /> <span>@s.Estatus</span> </td>
@@ -114,9 +128,59 @@
                     </td>
                 </tr>
                 <tr class="collapse" id="DetallesFila@(i)">
-                    <td class="col-sm-2">@s.Descripcion</td>
-                    <td class="col-sm-2">@s.Observaciones</td>
-                    <td class="col-sm-2">@s.Serie</td>
+                    <td class="col-sm-1"></td>
+                    <td class="col-sm-11 celdaDetalles " colspan="5">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <h4>Nombre </h4>
+                            <span>@s.Nombre</span>
+                        </div>
+                        <div class="col-md-1">
+                            <h4>Fabricante </h4>
+                            <span>@s.Fabricante</span>
+                        </div>
+                        <div class="col-md-1">
+                            <h4>Modelo </h4>
+                            <span>@s.Modelo</span>
+                        </div>
+                        <div class="col-md-1">
+                            <h4>Serie </h4>
+                            <span>@s.Serie</span>
+                        </div>
+                        <div class="col-md-2">
+                            <h4>Proveedor </h4>
+                            <span>@s.Proveedor</span>
+                        </div>
+                        <div class="col-md-2">
+                            <h4>Factura </h4>
+                            <span>@s.Factura</span>
+                        </div>
+                        <div class="col-md-2">
+                            <h4>Precio </h4>
+                            <span>@s.precio</span>
+                        </div>
+                        <div class="col-md-2">
+                            <h4>Precio Unitario </h4>
+                            <span>@s.precioUnitario</span>
+                        </div>
+                    </div>
+                    <div class="row" style="border-top: 1px dotted #455A64;">
+                        <div class="col-md-2">
+                            <h4>Cantidad Disponible</h4>
+                            <span>@s.CantidadDisponible</span>
+                        </div>
+                        <div class="col-md-5">
+                            <h4>Descripcion </h4>
+                            <span>@s.Descripcion</span>
+                        </div>
+                        <div class="col-md-5">
+                            <h4>Observaciones </h4>
+                            <span>@s.Observaciones</span>
+                        </div>
+                       
+                    </div>
+                    </td>
+               
                 </tr>
             }
         </tbody>

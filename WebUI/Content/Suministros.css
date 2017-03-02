@@ -124,3 +124,12 @@
     margin-left:0px;
     width:100%;
 }
+
+.celdaDetalles{
+    background-color: #80CBC4 !important;
+    color: #37474F !important;
+}
+
+.celdaDetalles span{
+ color: #212121 !important;
+}

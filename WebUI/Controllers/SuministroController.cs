@@ -22,25 +22,34 @@ namespace WebUI.Controllers
         
         }
 
-        public ViewResult SuministrosLista(int pagina = 1, int NumItems = 15)
+        public ViewResult SuministrosLista(int pagina = 1, int NumItems = 15,string orden = "asc")
         {
-      
             SuministroViewModel model = new SuministroViewModel()
             {
-                ListaArticulos = repositorio.Suministros
-                
-                .OrderBy(s => s.FechaAlta)
-                .Skip((pagina - 1) * NumItems)
-                .Take(NumItems),
                 PaginaInfo = new PaginacionInfo
                 {
                     PaginaActual = pagina,
                     ItemPorPagina = NumItems,
                     ItemsTotales = repositorio.Suministros.Count()
                 },
-                itemsPorPagina = NumItems
+                itemsPorPagina = NumItems,
+                OrdenFecha = orden
             };
-            
+
+            if (orden == "asc")
+            {
+                model.ListaArticulos = repositorio.Suministros
+                .OrderBy(s => s.FechaAlta)
+                .Skip((pagina - 1) * NumItems)
+                .Take(NumItems);
+            }
+          else
+            {
+                model.ListaArticulos = repositorio.Suministros
+               .OrderByDescending(s => s.FechaAlta)
+               .Skip((pagina - 1) * NumItems)
+               .Take(NumItems);
+            }
             return View(model);
         }
 
