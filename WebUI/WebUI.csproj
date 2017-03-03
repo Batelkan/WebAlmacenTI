@@ -140,6 +140,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AdminSuministro.css" />
     <Content Include="Content\AlmacenLayoutStyle.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -171,6 +172,7 @@
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminSuministroController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\SuministroController.cs" />
     <Compile Include="Global.asax.cs">
@@ -178,6 +180,7 @@
     </Compile>
     <Compile Include="HtmlHelpers\PaginHelper.cs" />
     <Compile Include="Infraestructura1\NinjectDependenciaResuelta.cs" />
+    <Compile Include="Models\AdminSuministroViewModel.cs" />
     <Compile Include="Models\PaginacionInfo.cs" />
     <Compile Include="Models\SuministroViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -191,6 +194,8 @@
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\_AlmacenLayout.cshtml" />
     <Content Include="Views\Suministro\SuministrosLista.cshtml" />
+    <Content Include="Views\_AdminSuministroLayout.cshtml" />
+    <Content Include="Views\AdminSuministro\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,94 @@
+﻿@model WebUI.Models.AdminSuministroViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_AdminSuministroLayout.cshtml";
+}
+<link href="~/Content/AdminSuministro.css" rel="stylesheet" />
+<h2>Index</h2>
+
+<div class="panel panelPrincipal">
+    <div class="panel-heading">
+        <h3>Editar  </h3>
+    </div>
+    @using (Html.BeginForm())
+    {
+        <div class="row">
+            <div class="col-md-3">
+                <div class="panel-body">
+
+                    <div class="form-group">
+                        <label>
+                            Nombre
+                        </label>
+                        @Html.TextBoxFor(s => s.suministro.Nombre, null, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            Categoria
+                        </label>
+                        @Html.DropDownListFor(s => s.suministro.Tipo, Model.categoria, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            Fabricante
+                        </label>
+                        @Html.TextBoxFor(s => s.suministro.Fabricante, null, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Modelo
+                        </label>
+                        @Html.TextBoxFor(s => s.suministro.Modelo, null, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Serie
+                        </label>
+                        @Html.TextBoxFor(s => s.suministro.Serie, null, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Factura
+                        </label>
+                        @Html.TextBoxFor(s => s.suministro.Factura, null, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Proveedor
+                        </label>
+                        @Html.TextBoxFor(s => s.suministro.Proveedor, null, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Estatus
+                        </label>
+                        @Html.DropDownListFor(s => s.suministro.Estatus, new SelectListItem[]
+                                { new SelectListItem() { Text = "Disponible", Value = "Disponible" },
+                                  new SelectListItem() { Text = "Ocupado", Value = "Ocupado" } },
+                                new { @class = "form-control BusquedaDropDownList ml-sm-0 mr-sm-0" })
+                    </div>
+                    <div>
+                        <label>
+                            Descripcion
+                        </label>
+
+                        @Html.TextAreaFor(s => s.suministro.Descripcion, new { @class = "form-control", rows = 5 });
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel-footer">
+                <input type="submit" value="Save" class="btn btnprimary" />
+                @Html.ActionLink("Cancel and return to List", "Index",
+                null, new
+                {
+                    @class = "btn btn-default"
+                })
+            </div>
+        </div>
+    }
+</div>

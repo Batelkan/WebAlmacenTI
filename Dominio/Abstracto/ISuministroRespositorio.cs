@@ -10,5 +10,6 @@ namespace Dominio.Abstracto
     public interface ISuministroRespositorio
     {
         IEnumerable<Articulos> Suministros { get; set; }
+        IEnumerable<Tipo> categoria { get; set; }
     }
 }

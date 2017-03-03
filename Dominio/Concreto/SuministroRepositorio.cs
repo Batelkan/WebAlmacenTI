@@ -16,5 +16,11 @@ namespace Dominio.Concreto
             get { return contexto.Articulos; }
             set { }
         }
+
+        public IEnumerable<Tipo> categoria
+        {
+            get { return contexto.Tipo; }
+            set { }
+        }
     }
 }

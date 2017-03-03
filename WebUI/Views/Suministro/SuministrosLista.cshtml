@@ -17,17 +17,17 @@
                 </div>
                 <div class="col-md-8">
                     <div class="searchInputGroup">
-                        @using (Html.BeginForm("SuministroBusqueda", "Suministro", null, FormMethod.Post, new { @class = "form-inline  pull-right", role = "form" }))
+                        @using (Html.BeginForm("SuministroBusqueda", "Suministro", null, FormMethod.Get, new { @class = "form-inline  pull-right", role = "form" }))
                         {
                             <div class="input-group">
                                 <div class="input-group-btn">
                                     @Html.DropDownListFor(Model => Model.CampoBusqueda, new SelectListItem[]
-{ new SelectListItem() { Text = "Categoria", Value = "Categoria" },
-                              new SelectListItem() { Text = "Factura", Value = "Factura" },
-                              new SelectListItem() { Text = "Disponibilidad", Value = "Disponibilidad" },
-                              new SelectListItem() { Text = "Modelo", Value = "Modelo" },
-                              new SelectListItem() { Text = "Fabricante", Value = "Fabricante" }},
-   new { @class = "form-control BusquedaDropDownList ml-sm-0 mr-sm-0" })
+                                { new SelectListItem() { Text = "Categoria", Value = "Categoria" },
+                                  new SelectListItem() { Text = "Factura", Value = "Factura" },
+                                  new SelectListItem() { Text = "Disponibilidad", Value = "Disponibilidad" },
+                                  new SelectListItem() { Text = "Modelo", Value = "Modelo" },
+                                  new SelectListItem() { Text = "Fabricante", Value = "Fabricante" }},
+                                new { @class = "form-control BusquedaDropDownList ml-sm-0 mr-sm-0" })
                                 </div>
                                 <div class="">
                                     @Html.TextBoxFor(Model => Model.terminoBusqueda, "Termino a buscar", new { @class = "form-control BusquedaTextBox ml-sm-0 mr-sm-0" })
@@ -52,9 +52,15 @@
         <br />
         <div class="container-fluid tablaSuministroCabezera  ">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-3 pull-left">
+                    <a href="@Url.Action("Editar", "AdminSuministro", new { pagina = 1, NumItems = 15})" class="btn btn-default">
+                        Agregar    <span class="glyphicon glyphicon-plus-sign" style="font-size:12px;display:inline-block;position:static !important"></span>
+                    </a>
 
-                    <div class="dropdown pull-left">
+                </div>
+                <div class="col-md-1 col-md-offset-5">
+
+                    <div class="dropdown pull-right">
                         <button class="btn btn-primary dropdown-toggle btnItems" type="button" data-toggle="dropdown">
                             # Items por pagina
                             <span class="caret"></span>
@@ -68,7 +74,7 @@
                     </div>
 
                 </div>
-                <div class="col-md-5 col-md-offset-4">
+                <div class="col-md-3">
                     <div class="pull-right">
                         @Html.PageLinks(Model.PaginaInfo, x => Url.Action("SuministrosLista", new { pagina = x, NumItems = Model.itemsPorPagina, orden = Model.OrdenFecha }))
                     </div>
@@ -125,6 +131,11 @@
                         <button class="btn btn-primary btn-circle" type="button" data-toggle="collapse" data-target="#DetallesFila@(i)" aria-expanded="false" aria-controls="DetallesControl">
                             <i class="glyphicon glyphicon-list" style="font-size:small;position:static !important"></i>
                         </button>
+
+                        <a href="@Url.Action("Editar", "AdminSuministro", new { id = @s.ID})" target="_blank" class="btn btn-circle  btn-warning ">
+                            <i class="glyphicon glyphicon-edit" style="font-size:small;position:static !important"></i>
+                        </a>
+
                     </td>
                 </tr>
                 <tr class="collapse" id="DetallesFila@(i)">
