@@ -3,5 +3,12 @@
 
 .panelPrincipal
 {
-    max-width:600px;
+    max-width:700px;
+    background-color:#ECEFF1;
+}
+
+.panelBottom{
+ background-color:#616161  !important;
+ margin: 0px 15px 0px 0px;
+
 }

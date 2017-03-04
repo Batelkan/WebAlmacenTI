@@ -28,7 +28,20 @@ namespace WebUI.Controllers
             AdminSuministroViewModel modelo = new AdminSuministroViewModel();
             modelo.suministro = repositorio.Suministros.FirstOrDefault(s => s.ID == id);
             modelo.categoria = repositorio.categoria.Select(c => new SelectListItem() { Text = c.Tipo1.ToString() });
+            ViewBag.IDsuministro = id;
+            ViewBag.Operacion = "Editar";
             return View("Index",modelo);
+        }
+        [HttpPost]
+        public ActionResult Editar(Articulos suministro)
+        {
+            if(ModelState.IsValid)
+            {
+                repositorio.SalvarSuminnistro(suministro);
+                TempData["MensajeAdmin"] = "Suministro Guardado con Exito !";
+                return View("Index", new AdminSuministroViewModel() {suministro = suministro,categoria = repositorio.categoria.Select(c => new SelectListItem() { Text = c.Tipo1.ToString() }) });
+            }
+            return View();
         }
     }
 }

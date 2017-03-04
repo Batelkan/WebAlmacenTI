@@ -5,18 +5,18 @@
     Layout = "~/Views/_AdminSuministroLayout.cshtml";
 }
 <link href="~/Content/AdminSuministro.css" rel="stylesheet" />
-<h2>Index</h2>
+<h2>Suministro de Equipo de Computo</h2>
 
 <div class="panel panelPrincipal">
     <div class="panel-heading">
-        <h3>Editar  </h3>
+        <h3>@ViewBag.Operacion #@ViewBag.IDsuministro </h3>
     </div>
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Editar", "AdminSuministro",FormMethod.Post,new { suministro = Model.suministro}))
     {
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <div class="panel-body">
-
+                    @Html.HiddenFor(s => s.suministro.ID)
                     <div class="form-group">
                         <label>
                             Nombre
@@ -55,6 +55,24 @@
                         </label>
                         @Html.TextBoxFor(s => s.suministro.Factura, null, new { @class = "form-control" })
                     </div>
+                    <div>
+                        <label>
+                            Descripcion
+                        </label>
+
+                        @Html.TextAreaFor(s => s.suministro.Descripcion, new { @class = "form-control", rows = 5 });
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel-body">
+
+                    <div class="form-group">
+                        <label>
+                            Fecha de Alta
+                        </label>
+                        @Html.TextBoxFor(model => model.suministro.FechaAlta, new { @class = "form-control", placeholder = "Enter Drop-off date here..." })
+                    </div>
                     <div class="form-group">
                         <label>
                             Proveedor
@@ -70,25 +88,62 @@
                                   new SelectListItem() { Text = "Ocupado", Value = "Ocupado" } },
                                 new { @class = "form-control BusquedaDropDownList ml-sm-0 mr-sm-0" })
                     </div>
+                    <div class="form-group">
+                        <label>
+                            Cantidad
+                        </label>
+                        @Html.TextBoxFor(s => s.suministro.Cantidad, null, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Cantidad Disponible
+                        </label>
+                        @Html.TextBoxFor(s => s.suministro.CantidadDisponible, null, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Precio Unitario
+                        </label>
+                        @Html.TextBoxFor(s => s.suministro.precioUnitario, null, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Precio
+                        </label>
+                        @Html.TextBoxFor(s => s.suministro.precio, null, new { @class = "form-control" })
+                    </div>
                     <div>
                         <label>
-                            Descripcion
+                            Observaciones
                         </label>
 
-                        @Html.TextAreaFor(s => s.suministro.Descripcion, new { @class = "form-control", rows = 5 });
+                        @Html.TextAreaFor(s => s.suministro.Observaciones, new { @class = "form-control", rows = 5 });
                     </div>
                 </div>
             </div>
-
-
-            <div class="panel-footer">
-                <input type="submit" value="Save" class="btn btnprimary" />
-                @Html.ActionLink("Cancel and return to List", "Index",
-                null, new
-                {
-                    @class = "btn btn-default"
-                })
+           
+        </div>
+        if(TempData["MensajeAdmin"] != null )
+        {
+            <div class="row" style="text-align:center">
+                <div class="panel-footer panelBottom">
+                    <label style="display: inline-block; margin-right:50px;">Suministro Guardado</label>
+                    <button class="btn btn-primary" id="btnCerrar" style="display: inline-block">Cerrar</button>
+                </div>
+            </div>
+        }
+        else
+        { 
+        <div class="row" style="text-align:center">
+            <div class="panel-footer panelBottom">
+                <input type="submit" value="Guardar" class="btn btn-primary" style="display: inline-block; margin-right:50px;" />
+                <button class = "btn  btn-danger" id = "btnCerrar" style = "display: inline-block">Cerrar</button>
             </div>
         </div>
+        }
     }
 </div>
+
+<script>
+                    $("#btnCerrar").click(function () { window.close(); });
+</script>

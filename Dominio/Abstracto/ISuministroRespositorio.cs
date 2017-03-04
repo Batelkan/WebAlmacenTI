@@ -11,5 +11,6 @@ namespace Dominio.Abstracto
     {
         IEnumerable<Articulos> Suministros { get; set; }
         IEnumerable<Tipo> categoria { get; set; }
+        void SalvarSuminnistro(Articulos art);
     }
 }

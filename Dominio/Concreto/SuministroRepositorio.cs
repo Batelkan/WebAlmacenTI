@@ -22,5 +22,39 @@ namespace Dominio.Concreto
             get { return contexto.Tipo; }
             set { }
         }
+
+        public void SalvarSuminnistro(Articulos art)
+        {
+            if(art.ID == 0)
+            {
+                contexto.Articulos.Add(art);
+            }
+
+            else
+            {
+                Articulos EFentrada = contexto.Articulos.Find(art.ID);
+                if(EFentrada != null)
+                {
+                    EFentrada.Nombre = art.Nombre;
+                    EFentrada.Modelo = art.Modelo;
+                    EFentrada.Observaciones = art.Observaciones;
+                    EFentrada.precio = art.precio;
+                    EFentrada.precioUnitario = art.precioUnitario;
+                    EFentrada.Proveedor = art.Proveedor;
+                    EFentrada.Serie = art.Serie;
+                    EFentrada.Tipo = art.Tipo;
+                    EFentrada.Cantidad = art.Cantidad;
+                    EFentrada.CantidadDisponible = art.CantidadDisponible;
+                    EFentrada.Descripcion = art.Descripcion;
+                    EFentrada.Estatus = art.Estatus;
+                    EFentrada.Fabricante = art.Fabricante;
+                    EFentrada.Factura = art.Factura;
+                    EFentrada.FechaAlta = art.FechaAlta;
+                   
+                }
+            }
+
+            contexto.SaveChanges();
+        }
     }
 }
