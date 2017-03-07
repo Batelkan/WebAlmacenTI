@@ -73,6 +73,7 @@
     <Compile Include="Modelo\Articulos.cs">
       <DependentUpon>AlmacenEntidadDeModelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\ClasesParciales.cs" />
     <Compile Include="Modelo\Computadoras.cs">
       <DependentUpon>AlmacenEntidadDeModelo.tt</DependentUpon>
     </Compile>
@@ -82,6 +83,7 @@
     <Compile Include="Modelo\Departamentos.cs">
       <DependentUpon>AlmacenEntidadDeModelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\MetadatosSuministro.cs" />
     <Compile Include="Modelo\Products.cs">
       <DependentUpon>AlmacenEntidadDeModelo.tt</DependentUpon>
     </Compile>
