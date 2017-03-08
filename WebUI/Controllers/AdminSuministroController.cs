@@ -32,6 +32,14 @@ namespace WebUI.Controllers
             ViewBag.Operacion = "Editar";
             return View("Index",modelo);
         }
+
+        public ActionResult Crear()
+        {
+            ViewBag.IDsuministro = "";
+            ViewBag.Operacion = "Nuevo Suministro";
+            return View("Index", new AdminSuministroViewModel() { suministro = new Articulos() {FechaAlta = DateTime.Now } ,categoria = repositorio.categoria.Select(c => new SelectListItem() { Text = c.Tipo1.ToString() }) });
+        }
+
         [HttpPost]
         public ActionResult Editar(Articulos suministro)
         {

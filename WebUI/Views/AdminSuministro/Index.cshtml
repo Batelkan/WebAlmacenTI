@@ -11,7 +11,7 @@
     <div class="panel-heading">
         <h3>@ViewBag.Operacion #@ViewBag.IDsuministro </h3>
     </div>
-    @using (Html.BeginForm("Editar", "AdminSuministro",FormMethod.Post,new { suministro = Model.suministro}))
+    @using (Html.BeginForm("Editar", "AdminSuministro", FormMethod.Post , new { suministro = Model.suministro} ) )
     {
         <div class="row">
             <div class="col-md-6">

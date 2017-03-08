@@ -53,7 +53,7 @@
         <div class="container-fluid tablaSuministroCabezera  ">
             <div class="row">
                 <div class="col-md-3 pull-left">
-                    <a href="@Url.Action("Editar", "AdminSuministro", new { pagina = 1, NumItems = 15})" class="btn btn-default">
+                    <a href="@Url.Action("Crear", "AdminSuministro", new { pagina = 1, NumItems = 15})" class="btn btn-default">
                         Agregar    <span class="glyphicon glyphicon-plus-sign" style="font-size:12px;display:inline-block;position:static !important"></span>
                     </a>
 
@@ -117,7 +117,7 @@
             @{ int i = 0; }
             @{ string fondoCelda = "bg-success";}
 
-            @foreach (var s in Model.ListaArticulos)
+            @foreach (var s in Model.ListaArticulos) 
             {
                 i++;
                 fondoCelda = (i % 2 == 0 ? "bg-success" : "whiteRow");
