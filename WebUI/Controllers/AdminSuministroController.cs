@@ -49,7 +49,15 @@ namespace WebUI.Controllers
                 TempData["MensajeAdmin"] = "Suministro Guardado con Exito !";
                 return View("Index", new AdminSuministroViewModel() {suministro = suministro,categoria = repositorio.categoria.Select(c => new SelectListItem() { Text = c.Tipo1.ToString() }) });
             }
-            return View();
+            return View("Index", new AdminSuministroViewModel() { suministro = suministro, categoria = repositorio.categoria.Select(c => new SelectListItem() { Text = c.Tipo1.ToString() }) });
         }
+
+        public ActionResult Borrar(Articulos suministro )
+        {
+            repositorio.BorrarSuminnistro(suministro);
+
+            return JavaScript("function () { window.close(); }");
+        }
+
     }
 }

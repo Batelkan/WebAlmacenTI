@@ -166,10 +166,11 @@
 
     $(document).ready(function () {
         $("#datepicker").datepicker({
-            //dateFormat: "yy-mm-dd",(to display date in required format)
+            dateFormat: "dd/mm/yy 00:00:00",
             changeYear: true,
             changeMonth: true,
             yearRange: '1900:2222',
+            timeFormat: 'hh:mm',
             background: '#000',
             showOn: "button"
         }).css("display", "inline-block")
@@ -177,6 +178,7 @@
                   icons: { primary: "ui-icon-calendar" },
                   label: "cal",
                   text: false
+                
               });
     });
 

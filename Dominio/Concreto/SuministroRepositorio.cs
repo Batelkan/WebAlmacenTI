@@ -56,5 +56,15 @@ namespace Dominio.Concreto
 
             contexto.SaveChanges();
         }
+
+       public void BorrarSuminnistro(Articulos art)
+        {
+            if (art.ID != 0)
+            {
+                contexto.Articulos.Remove(art);
+                contexto.SaveChanges();
+            }
+
+        }
     }
 }
