@@ -30,9 +30,8 @@ namespace Dominio.Modelo
         public string Tipo;
 
         [DataType(DataType.DateTime)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy 00:00:00}")]
         [Required(ErrorMessage = "Selecciona la fecha")]
-        public System.DateTime FechaAlta;
+        public DateTime FechaAlta;
 
         [Required(ErrorMessage = "Escribe la factura")]
         public string Factura;
