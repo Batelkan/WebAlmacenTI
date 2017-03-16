@@ -79,7 +79,7 @@
                             Fecha de Alta
                         </label>
                         <div class="input-group">
-                            @Html.TextBoxFor(model => model.suministro.FechaAlta, "{0:MM/dd/yyyy}", new { @class = "form-control", id = "datepicker", style = "width:70% !important" })
+                            @Html.TextBoxFor(model => model.suministro.FechaAlta, "{0:MM/dd/yyyy 00:00:00}", new { @class = "form-control", id = "datepicker", style = "width:70% !important" })
                         </div>
                         @Html.ValidationMessageFor(s => s.suministro.FechaAlta)
                     </div>
@@ -163,15 +163,16 @@
 
 <script>
     $("#btnCerrar").click(function () { window.close(); });
-
+    var d = new Date();
     $(document).ready(function () {
         $("#datepicker").datepicker({
             dateFormat: "dd/mm/yy 00:00:00",
             changeYear: true,
             changeMonth: true,
             yearRange: '1900:2222',
-            timeFormat: 'hh:mm',
+            timeFormat: 'hh:mm:ss',
             background: '#000',
+            defaultDate: d,
             showOn: "button"
         }).css("display", "inline-block")
               .next("button").button({

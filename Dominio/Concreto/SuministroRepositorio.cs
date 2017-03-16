@@ -61,7 +61,8 @@ namespace Dominio.Concreto
         {
             if (art.ID != 0)
             {
-                contexto.Articulos.Remove(art);
+               var sumi =  contexto.Articulos.Where(s=> s.ID == art.ID).FirstOrDefault();
+                contexto.Articulos.Remove(sumi);
                 contexto.SaveChanges();
             }
 
