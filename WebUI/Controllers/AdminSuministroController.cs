@@ -37,7 +37,7 @@ namespace WebUI.Controllers
         {
             ViewBag.IDsuministro = "";
             ViewBag.Operacion = "Nuevo Suministro";
-            return View("Index", new AdminSuministroViewModel() { suministro = new Articulos() {FechaAlta = new DateTime(  ) } ,categoria = repositorio.categoria.Select(c => new SelectListItem() { Text = c.Tipo1.ToString() }) });
+            return View("Index", new AdminSuministroViewModel() { suministro = new Articulos(), categoria = repositorio.categoria.Select(c => new SelectListItem() { Text = c.Tipo1.ToString() }) });
         }
 
         [HttpPost]
