@@ -14,4 +14,10 @@ namespace Dominio.Modelo
     [MetadataType(typeof(MetadatosSuministro))]
     public partial class Articulos
     { }
+
+    [MetadataType(typeof(MetadatosComputadoras))]
+    public partial class Computadoras
+    {
+
+    }
 }

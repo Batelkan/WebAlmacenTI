@@ -32,7 +32,8 @@ namespace WebUI.Infraestructura1
             private void AddBindigs()
             {
                  kernel.Bind<IWebAdminUsers>().To<WebAdminUsers>();
-            kernel.Bind<ISuministroRespositorio>().To<SuministroRepositorio>();
+                 kernel.Bind<ISuministroRespositorio>().To<SuministroRepositorio>();
+                 kernel.Bind<IComputadorasRepositorio>().To<ComputadoraRepositorio>();
             }
         }
     

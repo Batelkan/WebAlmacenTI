@@ -48,8 +48,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstracto\IComputadorasRepositorio.cs" />
     <Compile Include="Abstracto\ISuministroRespositorio.cs" />
     <Compile Include="Abstracto\IWebAdminUsers.cs" />
+    <Compile Include="Concreto\ComputadoraRepositorio.cs" />
     <Compile Include="Concreto\SuministroRepositorio.cs" />
     <Compile Include="Concreto\WebAdminUsers.cs" />
     <Compile Include="Modelo\AlmacenEntidadDeModelo.Context.cs">

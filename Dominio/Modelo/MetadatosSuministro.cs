@@ -58,4 +58,47 @@ namespace Dominio.Modelo
         [Range(0.01, double.MaxValue, ErrorMessage = "Tiene que ser un valor positivo")]
         public decimal precioUnitario;
     }
+
+    public class MetadatosComputadoras
+    {
+        [Required(ErrorMessage = "Selecciona el Tipo de Computadora")]
+        public string Tipo { get; set; }
+        [Required(ErrorMessage = "Escribe el nombre del fabricate")]
+        public string Fabricante { get; set; }
+        [Required(ErrorMessage = "Escribe numero de serie")]
+        public string serie { get; set; }
+        [Required(ErrorMessage = "Escribe el modelo del equipo")]
+        public string modelo { get; set; }
+        [Required(ErrorMessage = "Escribe el folio de factura del equipo")]
+        public string factura { get; set; }
+        [Required(ErrorMessage = "Escribe la ip del equipo")]
+        public string IP { get; set; }
+        [Required(ErrorMessage = "Escribe la mac del equipo")]
+        public string MAC { get; set; }
+        [Required(ErrorMessage = "Debes seleccionar una fecha de ingreso")]
+        public System.DateTime FechaAlta { get; set; }
+        [Required(ErrorMessage = "Seleccion el status del equipo")]
+        public string Estatus { get; set; }
+        [Required(ErrorMessage = "Escribe la descripcion del equipo")]
+        public string Descripcion { get; set; }
+
+        public string Observaciones { get; set; }
+        [Required(ErrorMessage = "Escribe el nombre del proveedor")]
+        public string Proveedor { get; set; }
+        [Required(ErrorMessage = "Escribe el tipo de procesador")]
+        public string Procesador { get; set; }
+        [Required(ErrorMessage = "Escribe la cantidad de ram")]
+        public string Ram { get; set; }
+        [Required(ErrorMessage = "Escribe la cantidad de alamcenamiento")]
+        public string HD { get; set; }
+        [Required(ErrorMessage = "Escribe el tipo de video")]
+        public string Video { get; set; }
+        [Required(ErrorMessage = "Escribe los tipos de IO")]
+        public string E_S { get; set; }
+        [Required(ErrorMessage = "Escribe el precio de compra sin iva")]
+        public decimal Precio { get; set; }
+        [Required(ErrorMessage = "Escribe el tipo de tarjeta madre")]
+        public string Madre { get; set; }
+    }
+
 }
