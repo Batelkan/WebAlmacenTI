@@ -129,9 +129,9 @@ namespace WebUI.Controllers
                     ItemPorPagina = 15,
                     ItemsTotales = repositorio.Suministros.Count()
                 };
-
+               
             }
-
+           
             else
             {
                 mod.PaginaInfo = new PaginacionInfo
@@ -145,7 +145,8 @@ namespace WebUI.Controllers
             return View("SuministrosLista",mod);
         }
 
-        
+         
+
 
     }
 }

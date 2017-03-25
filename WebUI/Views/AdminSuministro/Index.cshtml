@@ -164,6 +164,9 @@
 <script>
     $("#btnCerrar").click(function () { window.close(); });
     $(document).ready(function () {
+        jQuery.event.handle = jQuery.event.dispatch
+    });
+    $(document).ready(function () {
         $("#datepicker").datepicker({
             dateFormat: "dd/mm/yy",
             changeYear: true,
@@ -181,4 +184,23 @@
               });
     });
 
+    $(document).ready(function () {
+    if ($.validator) {
+        $.validator.addMethod("date",
+            function (value, element, params) {
+                if (this.optional(element)) {
+                    return true;
+                }
+
+                var ok = true;
+                try {
+                    $.datepicker.parseDate("dd/mm/yy", value);
+                }
+                catch (err) {
+                    ok = false;
+                }
+                return ok;
+            });
+       }
+    });
 </script>

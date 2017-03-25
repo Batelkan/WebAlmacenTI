@@ -1,0 +1,21 @@
+﻿body {
+}
+
+.fixTopTablaComputadoras
+{
+    margin-top: 174px;
+    margin-left:0px;
+    width:100%;
+}
+
+.Cabecera {border-bottom: 1px solid #ccc; max-height:80px}
+
+.searchInputGroup{
+    width:100%;
+    padding-top:11px;
+}
+
+.tablaComputadora
+{
+    font-size:12px;
+}
