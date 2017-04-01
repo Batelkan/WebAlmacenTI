@@ -232,6 +232,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\AreaComputadoras\AreaComputadorasAreaRegistration.cs" />
+    <Compile Include="Areas\AreaComputadoras\Controllers\AdminComputadoras.cs" />
     <Compile Include="Areas\AreaComputadoras\Controllers\ComputadorasController.cs" />
     <Compile Include="Areas\AreaComputadoras\Models\ComputadoraViewModel.cs" />
     <Compile Include="Controllers\AdminSuministroController.cs" />

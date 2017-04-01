@@ -1,22 +1,21 @@
 ﻿@model WebUI.Areas.AreaComputadoras.Models.ComputadoraViewModel
 @using WebUI.HtmlHelpers
 @{
+    ViewBag.Title = "ComputadorasLista";
     Layout = "~/Views/_AlmacenLayout.cshtml";
-
 }
 <link href="~/Content/Computadoras.css" rel="stylesheet" />
 
-<div class="fixTopTablaComputadoras">
+<div class="fixTopComputadoras">
     <div class="container-fluid Cabecera">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4 pull-left">
                     <h3>Lista de Computadoras</h3>
                 </div> 
-            </div>
             <div class="col-md-8">
                 <div class="searchInputGroup">
-                    @using (Html.BeginForm("SuministroBusqueda", "Suministro", null, FormMethod.Get, new { @class = "form-inline  pull-right", role = "form" }))
+                    @using (Html.BeginForm("ComputoBusqueda", "Computadoras", null, FormMethod.Get, new { @class = "form-inline  pull-right", role = "form" }))
                     {
                         <div class="input-group">
                             <div class="input-group-btn">
@@ -46,10 +45,10 @@
             </div>
         </div>
     </div>
-
+</div>
     <div class="container-fluid">
         <br />
-        <div class="container-fluid tablaSuministroCabezera  ">
+        <div class="container-fluid tablaComputadorasCabezera">
             <div class="row">
                 <div class="col-md-3 pull-left">
                     <a href="@Url.Action("Crear", "AdminComputadoras", new { pagina = 1, NumItems = 15})" class="btn btn-default" target="_blank">
@@ -65,17 +64,17 @@
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("15  items", "SuministrosLista", new { pagina = 1, NumItems = 15, orden = Model.OrdenFecha })</li>
-                            <li>@Html.ActionLink("25  items", "SuministrosLista", new { pagina = 1, NumItems = 25, orden = Model.OrdenFecha })</li>
-                            <li>@Html.ActionLink("50  items", "SuministrosLista", new { pagina = 1, NumItems = 50, orden = Model.OrdenFecha })</li>
-                            <li>@Html.ActionLink("100 items", "SuministrosLista", new { pagina = 1, NumItems = 100, orden = Model.OrdenFecha })</li>
+                            <li>@Html.ActionLink("15  items", "ComputadorasLista", new { pagina = 1, NumItems = 15, orden = Model.OrdenFecha })</li>
+                            <li>@Html.ActionLink("25  items", "ComputadorasLista", new { pagina = 1, NumItems = 25, orden = Model.OrdenFecha })</li>
+                            <li>@Html.ActionLink("50  items", "ComputadorasLista", new { pagina = 1, NumItems = 50, orden = Model.OrdenFecha })</li>
+                            <li>@Html.ActionLink("100 items", "ComputadorasLista", new { pagina = 1, NumItems = 100, orden = Model.OrdenFecha })</li>
                         </ul>
                     </div>
 
                 </div>
                 <div class="col-md-3">
                     <div class="pull-right">
-                        @Html.PageLinks(Model.PaginaInfo, x => Url.Action("SuministrosLista", new { pagina = x, NumItems = Model.itemsPorPagina, orden = Model.OrdenFecha }))
+                        @Html.PageLinks(Model.PaginaInfo, x => Url.Action("ComputadorasLista", new { pagina = x, NumItems = Model.itemsPorPagina, orden = Model.OrdenFecha }))
                     </div>
                 </div>
             </div>
@@ -86,7 +85,7 @@
 </div>
 
 <div class="container fixTopTablaComputadoras">
-    <table  class="table table-sm table-hover table-responsive tablaSuministro table-striped">
+    <table  class="table table-sm table-hover table-responsive tablaComputadora table-striped">
         <thead>
             <tr>
                 <th class="col-sm-1"></th>
@@ -95,7 +94,7 @@
                 <th class="col-sm-1"></th>
                 <th class="col-sm-1" style="padding: 5px 0px 2px 0px">
                     @{ string ord = Model.OrdenFecha == "asc" ? "dsc" : "asc"; }
-                    <a href="@Url.Action("ComputadorasLista", "Computadoras", new { pagina = 1, NumItems = 15, orden = ord })" style="height:20px;width:100px;background-color: #E0F2F1;padding:0px !important;" class="btn btn-default">
+                    <a href="@Url.Action("ComputadorasLista", "Computadoras",new { pagina = 1, NumItems = 15, orden = ord })" style="height:20px;width:100px;background-color: #E0F2F1;padding:0px !important;" class="btn btn-default">
 
                         @if (ord == "asc")
                         {
@@ -176,7 +175,7 @@
                         <div class="row" style="border-top: 1px dotted #455A64;">
                             <div class="col-md-2">
                                 <h4>Cantidad Disponible</h4>
-                                <span>@s.CantidadDisponible</span>
+                                <span>@s.Ram</span>
                             </div>
                             <div class="col-md-5">
                                 <h4>Descripcion </h4>

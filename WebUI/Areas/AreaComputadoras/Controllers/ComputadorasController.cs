@@ -60,5 +60,100 @@ namespace WebUI.Areas.AreaComputadoras.Controllers
             return View(modelo);
         }
 
+
+        public ViewResult ComputoBusqueda( ComputadoraViewModel modelo )
+        {
+            if (modelo.terminoBusqueda == null)
+            {
+                ComputadoraViewModel modIfEmpty = new ComputadoraViewModel()
+                {
+                   ListaComputadoras = repositorio.Computo
+                      .OrderBy(s => s.FechaAlta)
+                      .Skip((1 - 1) * 15)
+                      .Take(15),
+                    PaginaInfo = new WebUI.Models.PaginacionInfo
+                    {
+                        PaginaActual = 1,
+                        ItemPorPagina = 15,
+                        ItemsTotales = repositorio.Computo.Count()
+                    },
+                    itemsPorPagina = 15
+                };
+
+                return View("ComputadorasLista", modIfEmpty);
+            }
+
+
+
+            ComputadoraViewModel mod = new ComputadoraViewModel();
+            mod.itemsPorPagina = 15;
+
+            switch (modelo.CampoBusqueda)
+            {
+                case "Categoria":
+                    mod.ListaComputadoras = repositorio.Computo
+                        .Where(s => s.Tipo.ToLower().Trim() == modelo.terminoBusqueda.ToLower().Trim())
+                        .OrderByDescending(s => s.FechaAlta);
+                    break;
+                case "Factura":
+                    mod.ListaComputadoras = repositorio.Computo
+                     .Where(s => s.factura.ToLower().Trim() == modelo.terminoBusqueda.ToLower().Trim())
+                     .OrderByDescending(s => s.FechaAlta);
+
+                    break;
+                case "Disponibilidad":
+                    mod.ListaComputadoras = repositorio.Computo
+                    .Where(s => s.Estatus.ToLower().Trim() == modelo.terminoBusqueda.ToLower().Trim())
+                    .OrderByDescending(s => s.FechaAlta);
+                    break;
+                case "Modelo":
+                    mod.ListaComputadoras = repositorio.Computo
+                     .Where(s => s.modelo.ToLower().Trim() == modelo.terminoBusqueda.ToLower().Trim())
+                     .OrderByDescending(s => s.FechaAlta);
+                    break;
+                case "Fabricante":
+                    mod.ListaComputadoras = repositorio.Computo
+                     .Where(s => s.Fabricante.ToLower().Trim() == modelo.terminoBusqueda.ToLower().Trim())
+                     .OrderByDescending(s => s.FechaAlta);
+                    break;
+                default:
+                    mod.ListaComputadoras = repositorio.Computo
+                      .OrderByDescending(s => s.FechaAlta)
+                      .Skip((1 - 1) * mod.itemsPorPagina)
+                      .Take(mod.itemsPorPagina);
+                    break;
+
+            }
+
+            if (!mod.ListaComputadoras.Any())
+            {
+                mod.ListaComputadoras = repositorio.Computo
+                   .OrderByDescending(s => s.FechaAlta)
+                   .Skip((1 - 1) * 15)
+                   .Take(15);
+                mod.PaginaInfo = new WebUI.Models.PaginacionInfo
+                {
+                    PaginaActual = 1,
+                    ItemPorPagina = 15,
+                    ItemsTotales = repositorio.Computo.Count()
+                };
+
+            }
+
+            else
+            {
+                mod.PaginaInfo = new WebUI.Models.PaginacionInfo
+                {
+                    PaginaActual = 1,
+                    ItemPorPagina = mod.ListaComputadoras.Count(),
+                    ItemsTotales = mod.ListaComputadoras.Count()
+                };
+            }
+
+            return View("ComputadorasLista", mod);
+        }
+
+
+
     }
 }

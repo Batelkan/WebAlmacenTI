@@ -49,7 +49,7 @@ namespace WebUI.Controllers
                .OrderByDescending(s => s.FechaAlta)
                .Skip((pagina - 1) * NumItems)
                .Take(NumItems);
-            }
+            } 
             return View(model);
         }
 
