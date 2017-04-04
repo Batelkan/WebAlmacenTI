@@ -1,0 +1,21 @@
+﻿@model WebUI.Areas.AreaComputadoras.Models.AdminComputadorasViewModel
+
+@{
+    Layout = null;
+    ViewBag.Title = "Editar Computadoras";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Editar</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Editar", "AdminComputadoras",FormMethod.Post,new {computadoras = Model.computadoras }))
+        { }
+    </div>
+</body>
+</html>

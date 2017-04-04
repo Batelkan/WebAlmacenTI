@@ -10,7 +10,9 @@ namespace Dominio.Abstracto
     public interface IComputadorasRepositorio
     {
         IEnumerable<Computadoras> Computo { get; set; }
+
         void SalvarComputadora(Computadoras comp);
         void BorrarComputadora(Computadoras comp);
+        IEnumerable<Tipo> categoria { get; set; }
     }
 }
