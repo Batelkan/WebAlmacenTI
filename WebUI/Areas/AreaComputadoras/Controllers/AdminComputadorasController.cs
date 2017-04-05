@@ -22,6 +22,15 @@ namespace WebUI.Areas.AreaComputadoras.Controllers
             repositorio = repo;
         }
 
+
+        public ActionResult Crear( )
+        {
+            ViewBag.IDsuministro = "";
+            ViewBag.Operacion = "Nuevo Suministro";
+            return View("Editar", new Dominio.Modelo.Computadoras());
+        }
+
+
         public ViewResult Editar( int id )
         {
             AdminComputadorasViewModel modelo = new AdminComputadorasViewModel();
@@ -29,8 +38,7 @@ namespace WebUI.Areas.AreaComputadoras.Controllers
             modelo.categoria = repositorio.categoria.Select(c => new SelectListItem() { Text = c.Tipo1.ToString() });
             ViewBag.IDsuministro = id;
             ViewBag.Operacion = "Editar";
-
-
+            return View("Editar", modelo);
         }
     }
 }

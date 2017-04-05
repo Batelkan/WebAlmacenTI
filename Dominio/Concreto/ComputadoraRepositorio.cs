@@ -17,7 +17,9 @@ namespace Dominio.Concreto
             set { }
         }
 
-       public void SalvarComputadora(Computadoras comp)
+       public IEnumerable<Tipo> categoria { get; set; }
+
+        public void SalvarComputadora(Computadoras comp)
         {
 
         }

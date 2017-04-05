@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace Dominio.Modelo
 {
@@ -61,6 +62,8 @@ namespace Dominio.Modelo
 
     public class MetadatosComputadoras
     {
+        [HiddenInput (DisplayValue = false)]
+        public int ID { get; set; }
         [Required(ErrorMessage = "Selecciona el Tipo de Computadora")]
         public string Tipo { get; set; }
         [Required(ErrorMessage = "Escribe el nombre del fabricate")]

@@ -19,6 +19,11 @@ namespace WebUI.Areas.AreaComputadoras
                 "AreaComputadoras/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
+
+            context.MapRoute(
+            name: "FormRuta",
+            url: "AreaComputadoras/{controller}/{action}"
+            );
         }
     }
 }

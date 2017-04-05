@@ -1,4 +1,4 @@
-﻿@model WebUI.Areas.AreaComputadoras.Models.AdminComputadorasViewModel
+﻿@model Dominio.Modelo.Computadoras
 
 @{
     Layout = null;
@@ -14,8 +14,14 @@
 </head>
 <body>
     <div>
-        @using (Html.BeginForm("Editar", "AdminComputadoras",FormMethod.Post,new {computadoras = Model.computadoras }))
-        { }
+        @using (Html.BeginRouteForm("FormRuta", new { }, FormMethod.Post,new { data_Type = "computadoras" }))
+        {
+
+            <div>
+                @Html.EditorForModel();
+            </div>
+
+        }
     </div>
 </body>
 </html>
