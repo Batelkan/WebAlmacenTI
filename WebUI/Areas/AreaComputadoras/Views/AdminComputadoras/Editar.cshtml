@@ -1,4 +1,4 @@
-﻿@model Dominio.Modelo.Computadoras
+﻿@model WebUI.Areas.AreaComputadoras.Models.AdminComputadorasViewModel
 
 @{
     Layout = null;
@@ -14,12 +14,153 @@
 </head>
 <body>
     <div>
-        @using (Html.BeginRouteForm("FormRuta", new { }, FormMethod.Post,new { data_Type = "computadoras" }))
+        @using (Html.BeginRouteForm("FormRuta", new { }, FormMethod.Post, new { }))
         {
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel-body">
+                        @Html.HiddenFor(s => s.computadoras.ID)
+                        <div class="form-group">
+                            <label>
+                                Nombre
+                            </label>
+                            @Html.TextBoxFor(s => s.computadoras.Fabricante, null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(s =>  s.computadoras.Fabricante)
+                        </div>
 
-            <div>
-                @Html.EditorForModel();
+                        <div class="form-group">
+                            <label>
+                                Categoria
+                            </label>
+                            @Html.DropDownListFor(s => s.computadoras.Tipo, Model.categoria, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(s => s.computadoras.Tipo)
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                Fabricante
+                            </label>
+                            @Html.TextBoxFor(s => s.suministro.Fabricante, null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(s => s.suministro.Fabricante)
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Modelo
+                            </label>
+                            @Html.TextBoxFor(s => s.suministro.Modelo, null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(s => s.suministro.Modelo)
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Serie
+                            </label>
+                            @Html.TextBoxFor(s => s.suministro.Serie, null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(s => s.suministro.Serie)
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Factura
+                            </label>
+                            @Html.TextBoxFor(s => s.suministro.Factura, null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(s => s.suministro.Factura)
+                        </div>
+                        <div>
+                            <label>
+                                Descripcion
+                            </label>
+
+                            @Html.TextAreaFor(s => s.suministro.Descripcion, new { @class = "form-control", rows = 5 });
+                            @Html.ValidationMessageFor(s => s.suministro.Descripcion)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel-body">
+
+                        <div class="form-group">
+                            <label>
+                                Fecha de Alta
+                            </label>
+                            <div class="input-group">
+                                @Html.TextBoxFor(model => model.suministro.FechaAlta, null, new { @class = "form-control", id = "datepicker", style = "width:70% !important" })
+                            </div>
+                            @Html.ValidationMessageFor(s => s.suministro.FechaAlta)
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Proveedor
+                            </label>
+                            @Html.TextBoxFor(s => s.suministro.Proveedor, null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(s => s.suministro.Proveedor)
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Estatus
+                            </label>
+                            @Html.DropDownListFor(s => s.suministro.Estatus, new SelectListItem[]
+                                { new SelectListItem() { Text = "Disponible", Value = "Disponible" },
+                                  new SelectListItem() { Text = "Ocupado", Value = "Ocupado" } },
+                                new { @class = "form-control BusquedaDropDownList ml-sm-0 mr-sm-0" })
+                            @Html.ValidationMessageFor(s => s.suministro.Estatus)
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Cantidad
+                            </label>
+                            @Html.TextBoxFor(s => s.suministro.Cantidad, null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(s => s.suministro.Cantidad)
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Cantidad Disponible
+                            </label>
+                            @Html.TextBoxFor(s => s.suministro.CantidadDisponible, null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(s => s.suministro.CantidadDisponible)
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Precio Unitario
+                            </label>
+                            @Html.TextBoxFor(s => s.suministro.precioUnitario, null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(s => s.suministro.precioUnitario)
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Precio
+                            </label>
+                            @Html.TextBoxFor(s => s.suministro.precio, null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(s => s.suministro.precio)
+                        </div>
+                        <div>
+                            <label>
+                                Observaciones
+                            </label>
+
+                            @Html.TextAreaFor(s => s.suministro.Observaciones, new { @class = "form-control", rows = 5 });
+                            @Html.ValidationMessageFor(s => s.suministro.Observaciones)
+                        </div>
+                    </div>
+                </div>
+
             </div>
+            if (TempData["MensajeAdmin"] != null)
+            {
+                <div class="row" style="text-align:center">
+                    <div class="panel-footer panelBottom">
+                        <label style="display: inline-block; margin-right:50px;color:white">Suministro Guardado</label>
+                        <button class="btn btn-primary" id="btnCerrar" style="display: inline-block">Cerrar</button>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="row" style="text-align:center">
+                    <div class="panel-footer panelBottom">
+                        <input type="submit" value="Guardar" class="btn btn-primary" style="display: inline-block; margin-right:50px;" />
+                        <button class="btn  btn-danger" id="btnCerrar" style="display: inline-block">Cerrar</button>
+                    </div>
+                </div>
+            }
 
         }
     </div>
