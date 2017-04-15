@@ -40,37 +40,37 @@
                             <label>
                                 Fabricante
                             </label>
-                            @Html.TextBoxFor(s =>s.computadoras.Fabricante, null, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(s => s.computadoras.Fabricante)
+                            @Html.TextBoxFor(s => s.suministro.Fabricante, null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(s => s.suministro.Fabricante)
                         </div>
                         <div class="form-group">
                             <label>
                                 Modelo
                             </label>
-                            @Html.TextBoxFor(s => s.computadoras.modelo, null, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(s => s.computadoras.modelo)
+                            @Html.TextBoxFor(s => s.suministro.Modelo, null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(s => s.suministro.Modelo)
                         </div>
                         <div class="form-group">
                             <label>
                                 Serie
                             </label>
-                            @Html.TextBoxFor(s => s.computadoras.serie, null, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(s => s.computadoras.serie)
+                            @Html.TextBoxFor(s => s.suministro.Serie, null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(s => s.suministro.Serie)
                         </div>
                         <div class="form-group">
                             <label>
                                 Factura
                             </label>
-                            @Html.TextBoxFor(s => s.computadora.factura, null, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(s => s.computadora.factura)
+                            @Html.TextBoxFor(s => s.suministro.Factura, null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(s => s.suministro.Factura)
                         </div>
                         <div>
                             <label>
                                 Descripcion
                             </label>
 
-                            @Html.TextAreaFor(s => s.computadora.Descripcion, new { @class = "form-control", rows = 5 });
-                            @Html.ValidationMessageFor(s => s.computadora.Descripcion)
+                            @Html.TextAreaFor(s => s.suministro.Descripcion, new { @class = "form-control", rows = 5 });
+                            @Html.ValidationMessageFor(s => s.suministro.Descripcion)
                         </div>
                     </div>
                 </div>
