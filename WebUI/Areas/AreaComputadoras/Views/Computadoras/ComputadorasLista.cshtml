@@ -122,19 +122,19 @@
                 fondoCelda = (i % 2 == 0 ? "bg-success" : "whiteRow");
                 <tr class="FilaSuministro">
                     <th class="col-sm-1" scope="row"># @s.ID</th>
-                    <td class="col-sm-6"><span class="FilasHeaders">Computadora</span><br /><span class="FilasTexto">@s.Tipo  @s.Fabricante @s.modelo</span></td>
-                    <td class="col-sm-1"><span class="FilasHeaders">Direccion Red</span><br /><span>@s.IP</span></td>
-                    <td class="col-sm-1"><span class="FilasHeaders">Estatus</span><br /> <span>@s.Estatus</span> </td>
-                    <td class="col-sm-1"><spam class="FilasHeaders">Fecha reg.</spam><br /> <spam>@s.FechaAlta.ToShortDateString()</spam> </td>
+                    <td class="col-sm-6"><span class="FilasHeaders">Computadora</span><br /><span class="FilasTexto"><b>@s.Tipo  @s.Fabricante @s.modelo</b></span></td>
+                    <td class="col-sm-1"><span class="FilasHeaders">Direccion Red</span><br /><span><b>@s.IP</b></span></td>
+                    <td class="col-sm-1"><span class="FilasHeaders">Estatus</span><br /> <span><b>@s.Estatus</b></span> </td>
+                    <td class="col-sm-1"><spam class="FilasHeaders">Fecha reg.</spam><br /> <spam><b>@s.FechaAlta.ToShortDateString()</b></spam> </td>
                     <td class="col-sm-2">
                         <button class="btn btn-primary btn-circle" type="button" data-toggle="collapse" data-target="#DetallesFila@(i)" aria-expanded="false" aria-controls="DetallesControl">
                             <i class="glyphicon glyphicon-list" style="font-size:small;position:static !important"></i>
                         </button>
 
-                        <a href="@Url.Action("Editar", "AdminSuministro", new { id = @s.ID})" target="_new" class="btn btn-circle  btn-warning ">
+                        <a href="@Url.Action("Editar", "AdminComputadoras", new { id = @s.ID})" target="_new" class="btn btn-circle  btn-warning ">
                             <i class="glyphicon glyphicon-edit" style="font-size:small;position:static !important"></i>
                         </a>
-                        <a href="@Url.Action("Borrar", "AdminSuministro", new { id = @s.ID})" class="btn btn-circle  btn-danger ">
+                        <a href="@Url.Action("Borrar", "AdminComputadoras", new { id = @s.ID})" class="btn btn-circle  btn-danger ">
                             <i class="glyphicon glyphicon-trash" style="font-size:small;position:static !important"></i>
                         </a>
                     </td>
