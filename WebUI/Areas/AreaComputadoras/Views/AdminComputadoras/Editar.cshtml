@@ -10,15 +10,6 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link href="~/Content/AdminSuministro.css" rel="stylesheet" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="~/Scripts/bootstrap.js"></script>
-    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
-    <script src="~/Scripts/jquery.validate.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
-    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <title>Editar</title>
 </head>
 <body>
@@ -26,158 +17,127 @@
         @using (Html.BeginRouteForm("FormRuta", new { }, FormMethod.Post, new { }))
         {
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="panel-body">
                         @Html.HiddenFor(s => s.computadoras.ID)
                         <div class="form-group">
                             <label>
-                               Tipo
+                                Nombre
                             </label>
-                            @Html.DropDownListFor(s => s.computadoras.Tipo, new SelectListItem[]
-                                { new SelectListItem() { Text = "PORTATIL", Value = "Disponible" },
-                                  new SelectListItem() { Text = "ESCRITORIO", Value = "Ocupado" },
-                                  new SelectListItem() { Text = "TABLETA", Value = "Ocupado" },},
-                                new { @class = "form-control BusquedaDropDownList ml-sm-0 mr-sm-0" })
+                            @Html.TextBoxFor(s => s.computadoras.Fabricante, null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(s =>  s.computadoras.Fabricante)
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                Categoria
+                            </label>
+                            @Html.DropDownListFor(s => s.computadoras.Tipo, Model.categoria, new { @class = "form-control" })
                             @Html.ValidationMessageFor(s => s.computadoras.Tipo)
                         </div>
-                  
+
                         <div class="form-group">
                             <label>
                                 Fabricante
                             </label>
-                            @Html.TextBoxFor(s => s.computadoras.Fabricante, null, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(s => s.computadoras.Fabricante)
+                            @Html.TextBoxFor(s => s.suministro.Fabricante, null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(s => s.suministro.Fabricante)
                         </div>
                         <div class="form-group">
                             <label>
                                 Modelo
                             </label>
-                            @Html.TextBoxFor(s => s.computadoras.modelo, null, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(s => s.computadoras.modelo)
+                            @Html.TextBoxFor(s => s.suministro.Modelo, null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(s => s.suministro.Modelo)
                         </div>
                         <div class="form-group">
                             <label>
                                 Serie
                             </label>
-                            @Html.TextBoxFor(s =>s.computadoras.serie, null, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(s => s.computadoras.serie)
+                            @Html.TextBoxFor(s => s.suministro.Serie, null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(s => s.suministro.Serie)
                         </div>
                         <div class="form-group">
                             <label>
                                 Factura
                             </label>
-                            @Html.TextBoxFor(s => s.computadoras.factura, null, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(s => s.computadoras.factura)
-                        </div>
-                 
-                        <div class="form-group">
-                            <label>
-                                Fecha de Alta
-                            </label>
-                            <div class="input-group">
-                                @Html.TextBoxFor(s => s.computadoras.FechaAlta, null, new { @class = "form-control", id = "datepicker",style = "width:70% !important" })
-                            </div>
-                            @Html.ValidationMessageFor(s => s.computadoras.FechaAlta)
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="panel-body">
-
-                        <div class="form-group">
-                            <label>
-                                Proveedor
-                            </label>
-                            @Html.TextBoxFor(s => s.computadoras.Proveedor, null, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(s => s.computadoras.Proveedor)
-                        </div>
-                        <div class="form-group">
-                            <label>
-                                Estatus
-                            </label>
-                            @Html.DropDownListFor(s => s.computadoras.Estatus, new SelectListItem[]
-                                { new SelectListItem() { Text = "Disponible", Value = "Disponible" },
-                                  new SelectListItem() { Text = "Ocupado", Value = "Ocupado" } },
-                                new { @class = "form-control BusquedaDropDownList ml-sm-0 mr-sm-0" })
-                            @Html.ValidationMessageFor(s => s.computadoras.Estatus)
-                        </div>
-                        <div class="form-group">
-                            <label>
-                                IP
-                            </label>
-                            @Html.TextBoxFor(s => s.computadoras.IP, null, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(s => s.computadoras.IP)
-                        </div>
-                        <div class="form-group">
-                            <label>
-                                Precio
-                            </label>
-                            @Html.TextBoxFor(s => s.computadoras.Precio, null, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(s => s.computadoras.Precio)
+                            @Html.TextBoxFor(s => s.suministro.Factura, null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(s => s.suministro.Factura)
                         </div>
                         <div>
                             <label>
                                 Descripcion
                             </label>
 
-                            @Html.TextAreaFor(s => s.computadoras.Descripcion, new { @class = "form-control", rows = 5 });
-                            @Html.ValidationMessageFor(s => s.computadoras.Descripcion)
+                            @Html.TextAreaFor(s => s.suministro.Descripcion, new { @class = "form-control", rows = 5 });
+                            @Html.ValidationMessageFor(s => s.suministro.Descripcion)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel-body">
+
+                        <div class="form-group">
+                            <label>
+                                Fecha de Alta
+                            </label>
+                            <div class="input-group">
+                                @Html.TextBoxFor(model => model.suministro.FechaAlta, null, new { @class = "form-control", id = "datepicker", style = "width:70% !important" })
+                            </div>
+                            @Html.ValidationMessageFor(s => s.suministro.FechaAlta)
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Proveedor
+                            </label>
+                            @Html.TextBoxFor(s => s.suministro.Proveedor, null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(s => s.suministro.Proveedor)
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Estatus
+                            </label>
+                            @Html.DropDownListFor(s => s.suministro.Estatus, new SelectListItem[]
+                                { new SelectListItem() { Text = "Disponible", Value = "Disponible" },
+                                  new SelectListItem() { Text = "Ocupado", Value = "Ocupado" } },
+                                new { @class = "form-control BusquedaDropDownList ml-sm-0 mr-sm-0" })
+                            @Html.ValidationMessageFor(s => s.suministro.Estatus)
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Cantidad
+                            </label>
+                            @Html.TextBoxFor(s => s.suministro.Cantidad, null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(s => s.suministro.Cantidad)
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Cantidad Disponible
+                            </label>
+                            @Html.TextBoxFor(s => s.suministro.CantidadDisponible, null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(s => s.suministro.CantidadDisponible)
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Precio Unitario
+                            </label>
+                            @Html.TextBoxFor(s => s.suministro.precioUnitario, null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(s => s.suministro.precioUnitario)
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Precio
+                            </label>
+                            @Html.TextBoxFor(s => s.suministro.precio, null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(s => s.suministro.precio)
                         </div>
                         <div>
                             <label>
                                 Observaciones
                             </label>
 
-                            @Html.TextAreaFor(s => s.computadoras.Observaciones, new { @class = "form-control", rows = 5 });
-                            @Html.ValidationMessageFor(s => s.computadoras.Observaciones)
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="panel-body">
-                        <div class="form-group">
-                            <label>
-                               Procesador
-                            </label>
-                            @Html.TextBoxFor(s => s.computadoras.Procesador, null, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(s => s.computadoras.Procesador)
-                        </div>
-
-                        <div class="form-group">
-                            <label>
-                               Memoria
-                            </label>
-                            @Html.TextBoxFor(s => s.computadoras.Ram, null, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(s => s.computadoras.Ram)
-                        </div>
-                        <div class="form-group">
-                            <label>
-                                Almacenamiemto
-                            </label>
-                            @Html.TextBoxFor(s => s.computadoras.HD, null, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(s => s.computadoras.HD)
-                        </div>
-                        <div class="form-group">
-                            <label>
-                                Video
-                            </label>
-                            @Html.TextBoxFor(s => s.computadoras.Video, null, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(s => s.computadoras.Video)
-                        </div>
-                        <div class="form-group">
-                            <label>
-                                Tarjeta Madre
-                            </label>
-                            @Html.TextBoxFor(s => s.computadoras.Madre, null, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(s => s.computadoras.Madre)
-                        </div>
-                        <div>
-                            <label>
-                               Input/Output
-                            </label>
-
-                            @Html.TextBoxFor(s => s.computadoras.E_S, new { @class = "form-control", rows = 5 });
-                            @Html.ValidationMessageFor(s => s.computadoras.E_S)
+                            @Html.TextAreaFor(s => s.suministro.Observaciones, new { @class = "form-control", rows = 5 });
+                            @Html.ValidationMessageFor(s => s.suministro.Observaciones)
                         </div>
                     </div>
                 </div>
@@ -187,7 +147,7 @@
             {
                 <div class="row" style="text-align:center">
                     <div class="panel-footer panelBottom">
-                        <label style="display: inline-block; margin-right:50px;color:white">Computadoras Guardado</label>
+                        <label style="display: inline-block; margin-right:50px;color:white">Suministro Guardado</label>
                         <button class="btn btn-primary" id="btnCerrar" style="display: inline-block">Cerrar</button>
                     </div>
                 </div>
@@ -206,47 +166,3 @@
     </div>
 </body>
 </html>
-
-<script>
-    $("#btnCerrar").click(function () { window.close(); });
-    $(document).ready(function () {
-        jQuery.event.handle = jQuery.event.dispatch
-    });
-    $(document).ready(function () {
-        $("#datepicker").datepicker({
-            dateFormat: "dd/mm/yy",
-            changeYear: true,
-            changeMonth: true,
-            yearRange: '1900:2222',
-            timeFormat: 'hh:mm:ss',
-            background: '#000',
-            showOn: "button"
-        }).datepicker("setDate", new Date()).css("display", "inline-block")
-              .next("button").button({
-                  icons: { primary: "ui-icon-calendar" },
-                  label: "cal",
-                  text: false
-
-              });
-    });
-
-    $(document).ready(function () {
-    if ($.validator) {
-        $.validator.addMethod("date",
-            function (value, element, params) {
-                if (this.optional(element)) {
-                    return true;
-                }
-
-                var ok = true;
-                try {
-                    $.datepicker.parseDate("dd/mm/yy", value);
-                }
-                catch (err) {
-                    ok = false;
-                }
-                return ok;
-            });
-       }
-    });
-</script>

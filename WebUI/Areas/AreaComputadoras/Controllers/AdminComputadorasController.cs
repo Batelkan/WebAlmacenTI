@@ -27,7 +27,7 @@ namespace WebUI.Areas.AreaComputadoras.Controllers
         {
             ViewBag.IDsuministro = "";
             ViewBag.Operacion = "Nuevo Suministro";
-            return View("Editar", new AreaComputadoras.Models.AdminComputadorasViewModel() { computadoras = new Computadoras() { FechaAlta = DateTime.Now } });
+            return View("Editar", new Dominio.Modelo.Computadoras());
         }
 
 
@@ -35,31 +35,10 @@ namespace WebUI.Areas.AreaComputadoras.Controllers
         {
             AdminComputadorasViewModel modelo = new AdminComputadorasViewModel();
             modelo.computadoras = repositorio.Computo.FirstOrDefault(c => c.ID == id);
-            //modelo.categoria = repositorio.categoria.Select(c => new SelectListItem() { Text = c.Tipo1.ToString() });
+            modelo.categoria = repositorio.categoria.Select(c => new SelectListItem() { Text = c.Tipo1.ToString() });
             ViewBag.IDsuministro = id;
             ViewBag.Operacion = "Editar";
             return View("Editar", modelo);
         }
-
-        [HttpPost]
-        public ActionResult Editar( Computadoras computador )
-        {
-            if (ModelState.IsValid)
-            {
-                repositorio.SalvarComputadora(computador);
-                TempData["MensajeAdmin"] = "Computador Guardado con Exito !";
-                return View("Editar", new AdminComputadorasViewModel { computadoras = computador });
-            }
-            return View("Editar", new AdminComputadorasViewModel { computadoras = computador });
-        }
-
-        public ActionResult Borrar( Computadoras computador )
-        {
-            repositorio.BorrarComputadora(computador);
-
-            return View("ComputadorasLista");
-        }
-
-
     }
 }
